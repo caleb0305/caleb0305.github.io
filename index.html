@@ -76,10 +76,6 @@
       <div class="absolute inset-0 -z-10 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-60"></div>
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-amber-700 dark:text-amber-300 text-xs font-semibold mb-6">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Open to Power Platform roles and freelance projects
-          </div>
           <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.15]">
             Still tracking things in <span class="text-navy-600 dark:text-amber-400">spreadsheets and paper forms?</span>
           </h1>
@@ -115,12 +111,11 @@
           <div>
             <div class="flex flex-wrap items-center gap-2.5 mb-3">
               <span class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-navy-600 text-white">Example project</span>
-              <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60">Demo version · made-up sample data</span>
             </div>
             <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">IT Asset Manager</h2>
             <p class="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base">
               One place to keep track of every company laptop, phone, SIM card and software subscription — who has it, what happened to it,
-              and what needs attention today. I built this demo based on a system I created and use at work.
+              and what needs attention today.
             </p>
           </div>
           <a href="#tech" onclick="document.getElementById('tech-body').classList.remove('hidden'); document.getElementById('tech-chev').style.transform='rotate(180deg)'" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 self-start lg:self-auto">
@@ -128,17 +123,8 @@
           </a>
         </div>
 
-        <!-- Facts strip -->
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-8">
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">1 place</div><div class="text-xs text-slate-500">for laptops, phones, SIM cards and software</div></div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">1 click</div><div class="text-xs text-slate-500">to list everything a resigning employee must return</div></div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">Every</div><div class="text-xs text-slate-500">hand-over, return and repair is recorded</div></div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">PDF</div><div class="text-xs text-slate-500">accountability forms filled in for you</div></div>
-          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">₱0</div><div class="text-xs text-slate-500">extra software to buy if you have Microsoft 365</div></div>
-        </div>
-
         <!-- Problem / Solution / Difference -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
           <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
             <div class="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
             <h3 class="font-bold">The problem</h3>
@@ -189,7 +175,6 @@
             <div class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
               <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                 <span class="text-xs font-bold uppercase tracking-wider text-navy-600 dark:text-amber-400">How it works</span>
-                <span id="screen-badge" class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"></span>
               </div>
               <h4 id="annotation-title" class="mt-3 font-bold"></h4>
               <p id="annotation-desc" class="mt-1 text-xs text-slate-500 leading-relaxed"></p>
@@ -530,7 +515,6 @@ function render() {
     `<div class="px-3 pb-3 mb-2 border-b border-white/10"><div class="text-white font-bold text-[11px]">ASSET MANAGER</div><div class="text-[9px] text-slate-400">IT · ENTERPRISE ASSETS</div></div>` +
     NAV.map(n => `<div class="mx-2 px-2 py-1.5 rounded-md ${n === d.nav ? 'bg-[#144866] text-white border-l-2 border-amber-500' : ''}">${n}</div>`).join('');
   document.getElementById('screen-viewport').innerHTML = d.render(currentPin);
-  document.getElementById('screen-badge').textContent = d.badge;
   document.getElementById('annotation-title').textContent = d.title;
   document.getElementById('annotation-desc').textContent = d.desc;
   document.getElementById('annotation-list').innerHTML = d.annotations.map(i => {
