@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caleb Logronio | Power Platform Developer</title>
+  <meta name="description" content="Power Apps, SharePoint and Power Automate business apps by Caleb Logronio, Manila. Case study: IT Asset Manager." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+        colors: {
+          navy: { 50: '#F2F7FA', 100: '#E6F0F5', 500: '#165375', 600: '#0F3D57', 700: '#0A2A3D', 900: '#071E2C' },
+          amber: { 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706' }
+        }
+      } }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-thumb { background: rgba(148,163,184,.45); border-radius: 9999px; }
+    .pin { animation: pinPulse 2.2s infinite; }
+    @keyframes pinPulse { 0% { box-shadow: 0 0 0 0 rgba(245,158,11,.6);} 70% { box-shadow: 0 0 0 9px rgba(245,158,11,0);} 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0);} }
+    .code-block { counter-reset: line; }
+    .code-line::before { counter-increment: line; content: counter(line); display: inline-block; width: 2rem; margin-right: 1rem; text-align: right; color: #64748b; user-select: none; }
+    .code-line { white-space: pre; }
+    section[id], div[id] { scroll-margin-top: 80px; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors">
+
+<!-- ============================================================
+     EDIT YOUR DETAILS IN THE CONFIG BLOCK AT THE BOTTOM OF THIS FILE
+     (name, email, LinkedIn, GitHub, demo-request form, CV, video).
+     ============================================================ -->
+
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-white/85 dark:bg-slate-950/85 border-b border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-navy-600 flex items-center justify-center text-amber-400 font-bold shadow-sm" data-cfg="initials">CL</div>
+        <div class="flex flex-col leading-tight">
+          <span class="font-bold text-sm sm:text-base tracking-tight" data-cfg="name">Caleb Logronio</span>
+          <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400 hidden sm:inline">Power Platform Developer · Manila</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#case-study" class="hover:text-navy-600 dark:hover:text-amber-400">Case study</a>
+        <a href="#decisions" class="hover:text-navy-600 dark:hover:text-amber-400">Design decisions</a>
+        <a href="#architecture" class="hover:text-navy-600 dark:hover:text-amber-400">Architecture</a>
+        <a href="#projects" class="hover:text-navy-600 dark:hover:text-amber-400">Other work</a>
+        <a href="#contact" class="hover:text-navy-600 dark:hover:text-amber-400">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+        </button>
+        <a data-cfg-href="demoFormUrl" href="#contact" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-navy-600 text-white hover:bg-navy-500 shadow-sm">
+          <i data-lucide="calendar-check" class="w-4 h-4"></i><span>Request a demo</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="relative pt-14 pb-16 sm:pt-20 sm:pb-20 border-b border-slate-200/70 dark:border-slate-800/70 overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-60"></div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-amber-700 dark:text-amber-300 text-xs font-semibold mb-6">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Open to Power Platform roles and freelance projects
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.15]">
+            I turn spreadsheets and paper forms into <span class="text-navy-600 dark:text-amber-400">Power Apps</span> your team actually uses.
+          </h1>
+          <p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            I'm <span data-cfg="name">Caleb Logronio</span>, an Application Developer in Manila. I build canvas apps on <strong>SharePoint</strong> with
+            <strong>Power Automate</strong> — no Dataverse or premium licenses needed — for inventory, approvals, HR and IT operations.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#case-study" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-navy-600 hover:bg-navy-500 text-white font-semibold text-sm shadow-md">
+              <i data-lucide="layers" class="w-4 h-4"></i><span>See the IT Asset Manager</span>
+            </a>
+            <a href="#screenshots" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-semibold text-sm hover:border-slate-400">
+              <i data-lucide="image" class="w-4 h-4 text-amber-500"></i><span>See screenshots</span>
+            </a>
+          </div>
+          <div class="mt-10 pt-8 border-t border-slate-200/80 dark:border-slate-800/80">
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">What I work with</p>
+            <div class="flex flex-wrap gap-2 text-xs font-medium">
+              <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Power Apps (canvas)</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Power Fx</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">SharePoint lists &amp; libraries</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Power Automate</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Microsoft Forms</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">PDF forms from apps</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Power Apps YAML source</span>
+              <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">NetSuite admin &amp; SuiteScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDY -->
+    <section id="case-study" class="py-16 sm:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <div class="flex flex-wrap items-center gap-2.5 mb-3">
+              <span class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-navy-600 text-white">Featured case study</span>
+              <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60">Demo build · sample data</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">IT Asset Manager</h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base">
+              One place to track every laptop, phone, SIM line and software license — who holds it, what happened to it, and what needs attention today.
+              Built on Power Apps and SharePoint in my own Microsoft 365 tenant, based on an asset system I've built and run at work.
+            </p>
+          </div>
+          <a href="#code" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 self-start lg:self-auto">
+            <i data-lucide="file-code" class="w-4 h-4 text-navy-600 dark:text-amber-400"></i>See the Power Fx
+          </a>
+        </div>
+
+        <!-- Facts strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-8">
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">9</div><div class="text-xs text-slate-500">screens</div></div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">9</div><div class="text-xs text-slate-500">SharePoint lists + 1 library</div></div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">4</div><div class="text-xs text-slate-500">item types: hardware, phones, SIMs, licenses</div></div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">0</div><div class="text-xs text-slate-500">premium licenses needed</div></div>
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"><div class="text-2xl font-extrabold">100%</div><div class="text-xs text-slate-500">of changes logged to history</div></div>
+        </div>
+
+        <!-- Problem / Solution / Difference -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <div class="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
+            <h3 class="font-bold">The problem</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              IT teams lose track of who holds which device, loans go overdue, SIM costs pile up per department, license seats run out, and
+              when someone resigns nobody is sure what they still have. Spreadsheets don't keep a history, and nobody notices until an audit.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <div class="w-10 h-10 rounded-xl bg-navy-50 dark:bg-navy-900/60 text-navy-600 dark:text-amber-400 flex items-center justify-center mb-4"><i data-lucide="cpu" class="w-5 h-5"></i></div>
+            <h3 class="font-bold">What I built</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              A canvas app with a dashboard, inventory, asset records, an employee custody view, mobile &amp; SIM management, software seats and admin settings.
+              Every action follows the item's status rules and writes to a custody history. Accountability and turnover forms print to PDF and save to SharePoint.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
+            <h3 class="font-bold">What makes it different</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              One-click offboarding clears an employee across hardware, SIMs and licenses at once. Phones and SIM lines are tracked separately, so a number keeps its plan when the handset changes.
+              Dropdowns are managed by admins, not hard-coded — and it all runs on standard Microsoft 365.
+            </p>
+          </div>
+        </div>
+
+        <!-- WALKTHROUGH -->
+        <div class="mt-14">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+            <div>
+              <h3 class="text-xl font-bold flex items-center gap-2"><i data-lucide="monitor-smartphone" class="w-5 h-5 text-navy-600 dark:text-amber-400"></i>Screen walkthrough</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Pick a screen, then click the numbered pins to see how each part works.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-slate-200/70 dark:bg-slate-900 border border-slate-200 dark:border-slate-800" role="tablist" id="screen-tabs"></div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div class="lg:col-span-8 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-900 shadow-xl overflow-hidden">
+              <div class="h-9 bg-[#742774] text-white px-4 flex items-center justify-between text-xs">
+                <div class="flex items-center gap-2.5"><span class="font-semibold">Power Apps</span><span class="opacity-50">|</span><span class="text-purple-100">Asset Manager</span></div>
+                <span class="hidden sm:inline-flex items-center gap-1 text-[11px] bg-white/15 px-2 py-0.5 rounded"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>SharePoint</span>
+              </div>
+              <div class="flex min-h-[440px]">
+                <!-- mini sidebar -->
+                <div class="hidden sm:flex w-36 bg-navy-700 text-slate-300 flex-col text-[11px] py-3 gap-0.5 shrink-0" id="mock-sidebar"></div>
+                <div id="screen-viewport" class="flex-1 p-4 sm:p-5 bg-[#F3F5F8] dark:bg-slate-950 relative text-slate-900 dark:text-slate-100"></div>
+              </div>
+            </div>
+            <div class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+              <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-xs font-bold uppercase tracking-wider text-navy-600 dark:text-amber-400">How it works</span>
+                <span id="screen-badge" class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"></span>
+              </div>
+              <h4 id="annotation-title" class="mt-3 font-bold"></h4>
+              <p id="annotation-desc" class="mt-1 text-xs text-slate-500 leading-relaxed"></p>
+              <div id="annotation-list" class="mt-4 space-y-2.5"></div>
+            </div>
+          </div>
+          <p class="mt-3 text-[11px] text-slate-400">Simplified previews of the real screens. Full-size screenshots are below.</p>
+        </div>
+
+        <!-- SCREENSHOTS -->
+        <div class="mt-14" id="screenshots">
+          <h3 class="text-xl font-bold flex items-center gap-2 mb-4"><i data-lucide="image" class="w-5 h-5 text-navy-600 dark:text-amber-400"></i>Screenshots</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="shot-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN DECISIONS -->
+    <section id="decisions" class="py-16 bg-white dark:bg-slate-900/40 border-y border-slate-200/80 dark:border-slate-800/80">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold">Design decisions</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">The choices that keep the app fast, safe to change, and cheap to run as the data grows.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8" id="decision-grid"></div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture" class="py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="network" class="w-6 h-6 text-navy-600 dark:text-amber-400"></i>Architecture</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Click a layer to see what it does.</p>
+        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 sm:p-8 mt-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" id="arch-nodes"></div>
+          <div id="arch-detail" class="mt-6 p-5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800"></div>
+        </div>
+
+        <h3 class="text-lg font-bold mt-12 mb-4">Data model</h3>
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50 dark:bg-slate-800/60 text-xs uppercase tracking-wider text-slate-500">
+              <tr><th class="text-left px-4 py-3">List</th><th class="text-left px-4 py-3">Holds</th><th class="text-left px-4 py-3 hidden md:table-cell">Notes</th></tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800" id="model-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CODE -->
+    <section id="code" class="py-16 bg-white dark:bg-slate-900/40 border-y border-slate-200/80 dark:border-slate-800/80">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-5">
+          <div>
+            <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="terminal" class="w-6 h-6 text-navy-600 dark:text-amber-400"></i>Real code from the app</h2>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">The screens are kept as Power Apps YAML source, so the whole app is versioned and rebuilt from code.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2" id="code-tabs"></div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-slate-800 bg-[#0d1117] text-slate-200 shadow-lg">
+          <div class="px-4 py-2.5 bg-[#161b22] border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500/80"></span><span class="w-3 h-3 rounded-full bg-amber-500/80"></span><span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+              <span id="code-filename" class="ml-2 font-mono text-xs text-slate-400"></span>
+            </div>
+            <button onclick="copyCurrentCode()" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs bg-slate-800 hover:bg-slate-700 text-slate-300"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Copy</button>
+          </div>
+          <p id="code-caption" class="px-5 pt-4 text-xs text-slate-400"></p>
+          <pre id="code-content" class="p-4 sm:p-5 text-xs sm:text-[13px] font-mono leading-relaxed overflow-x-auto code-block"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- OTHER WORK -->
+    <section id="projects" class="py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold">Other work</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Apps and automations I've built for employers and clients. Names are left out; I'm happy to walk through them on a call.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8" id="project-grid"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT / SERVICES -->
+    <section id="contact" class="py-16 bg-navy-600 text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Want something like this for your team?</h2>
+          <p class="mt-3 text-slate-200 leading-relaxed">
+            I'll walk you through the IT Asset Manager live, then we can talk about what your team needs —
+            this app set up in your own Microsoft 365, adapted to your process, or something built from scratch.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-100">
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400 mt-0.5"></i>Asset, inventory and custody tracking</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400 mt-0.5"></i>Approval workflows with role-based access</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400 mt-0.5"></i>Printable forms and certificates saved to SharePoint</li>
+            <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400 mt-0.5"></i>Replacing Excel and paper processes with apps and flows</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white text-slate-900 p-6 sm:p-8 shadow-xl">
+          <h3 class="font-bold text-lg">Request a live demo</h3>
+          <p class="text-sm text-slate-600 mt-1">A short form — I'll reply by email to set a time. Your details are used only to contact you about your request.</p>
+          <a data-cfg-href="demoFormUrl" href="#" target="_blank" rel="noopener" class="mt-5 w-full inline-flex justify-center items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-navy-900 font-bold text-sm">
+            <i data-lucide="calendar-check" class="w-4 h-4"></i>Open the demo request form
+          </a>
+          <div class="mt-6 pt-5 border-t border-slate-200 flex flex-wrap gap-3 text-sm">
+            <button onclick="copyEmail()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-300 hover:bg-slate-100"><i data-lucide="mail" class="w-4 h-4"></i><span id="email-text">Email me</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+    © <span id="year"></span> <span data-cfg="name">Caleb Logronio</span> · Built with HTML on GitHub Pages · All screens and data shown are from a demo environment with sample data.
+  </footer>
+
+<script>
+/* ==========================================================
+   1. YOUR DETAILS — edit these, nothing else needs changing
+   ========================================================== */
+const CONFIG = {
+  name: 'Caleb Logronio',
+  initials: 'CL',
+  // email is split so simple spam bots can't read it from the page source
+  emailUser: 'logroniocaleb1', emailDomain: 'gmail.com',
+  demoFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScSg5F0uy23Ow-9PEOyt9Ce8T_X_WVa69aUBpyK_wqJzQXcAg/viewform',   // Google Form: Request a Demo
+  screenshots: [
+    { src: 'img/01-dashboard.webp', caption: 'Dashboard — counts, follow-ups and what is coming up' },
+    { src: 'img/02-assets.webp', caption: 'Assets — searchable inventory with filters' },
+    { src: 'img/03-asset-record.webp', caption: 'Asset record — actions, specs, custody history and linked SIM' },
+    { src: 'img/04-employees.webp', caption: 'Employees — everything a person holds, with offboarding' },
+    { src: 'img/05-mobile-sims.webp', caption: 'Mobile & SIMs — lines, plans and cost by department' },
+    { src: 'img/06-accountability-form.webp', caption: 'Accountability form — generated as a PDF from the app', fit: 'contain' }
+  ]
+};
+
+/* ==========================================================
+   2. Walkthrough screens
+   ========================================================== */
+const chip = (txt, cls) => `<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold border ${cls}">● ${txt}</span>`;
+const C = {
+  deployed: 'bg-blue-50 text-blue-700 border-blue-200',
+  stock: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  loan: 'bg-violet-50 text-violet-700 border-violet-200',
+  repair: 'bg-orange-50 text-orange-700 border-orange-200',
+  unret: 'bg-rose-50 text-rose-700 border-rose-200',
+  susp: 'bg-amber-50 text-amber-700 border-amber-200'
+};
+const card = 'rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800';
+const pin = (n, active, pos = '-top-2 -left-2') =>
+  `<button onclick="highlightPin(${n})" aria-label="Note ${n}" class="pin absolute ${pos} z-10 w-5 h-5 rounded-full ${active === n ? 'bg-amber-500' : 'bg-navy-600'} text-white text-[10px] font-bold flex items-center justify-center shadow">${n}</button>`;
+const ring = (n, active) => active === n ? 'ring-2 ring-amber-500/60 border-amber-400' : '';
+
+const screensData = {
+  dashboard: {
+    tab: 'Dashboard', nav: 'Dashboard', badge: 'scrDashboard', title: 'IT asset overview',
+    desc: 'The morning check: headline counts, a status breakdown, what needs chasing and what is coming up.',
+    annotations: [
+      { num: 1, title: 'Counts from one fast load', detail: 'App start loads assets, SIM lines, licenses and dropdown values in parallel with Concurrent() and ShowColumns(), so every tile counts from memory instead of querying SharePoint again.' },
+      { num: 2, title: 'Click a bar to filter', detail: 'Each status bar sets varStatusFilter and opens the Assets screen with that status already selected.' },
+      { num: 3, title: 'Needs follow-up', detail: 'Overdue loans, unreturned and lost items from several sources merged into one list with Ungroup(Table(...)) and sorted by urgency.' }
+    ],
+    render: a => `
+      <div class="flex items-center justify-between pb-3"><div><div class="text-[10px] text-slate-400">Asset Manager / Dashboard</div><div class="font-bold text-sm">IT asset overview</div></div><span class="text-[10px] px-2 py-1 rounded-full bg-white border border-slate-200 text-slate-500">● Synced 2:09 PM</span></div>
+      <div class="relative grid grid-cols-3 gap-2">${pin(1, a)}
+        ${[['Total assets','194','40 phones · 85 laptops','text-slate-900'],['Deployed','120','61.9% fleet utilization','text-blue-700'],['Needs follow-up','9','6 unreturned · 3 overdue','text-rose-600']].map(k => `
+        <div class="${card} p-2.5 ${ring(1, a)}"><div class="text-[9px] font-semibold uppercase text-slate-400">${k[0]}</div><div class="text-lg font-extrabold ${k[3]}">${k[1]}</div><div class="text-[9px] text-slate-500">${k[2]}</div></div>`).join('')}
+      </div>
+      <div class="grid grid-cols-2 gap-2 mt-3">
+        <div class="relative ${card} p-3 ${ring(2, a)}">${pin(2, a)}
+          <div class="text-xs font-bold mb-2">Assets by status</div>
+          ${[['Deployed',120,'bg-blue-600'],['In Stock',19,'bg-emerald-600'],['Temporary Loan',8,'bg-violet-600'],['Unreturned',6,'bg-rose-600'],['Under Repair',6,'bg-orange-500']].map(b => `
+          <div class="mb-1.5"><div class="flex justify-between text-[10px]"><span>${b[0]}</span><b>${b[1]}</b></div><div class="h-1.5 rounded bg-slate-100 dark:bg-slate-800"><div class="h-1.5 rounded ${b[2]}" style="width:${Math.max(4, b[1] / 1.2)}%"></div></div></div>`).join('')}
+        </div>
+        <div class="relative ${card} p-3 ${ring(3, a)}">${pin(3, a)}
+          <div class="flex justify-between items-center mb-2"><span class="text-xs font-bold">Needs follow-up</span><span class="text-[9px] px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 border border-rose-200">9 urgent</span></div>
+          ${[['AST-00112','Dell P2422H','Loan overdue by 28 day(s)',chip('Temporary Loan', C.loan)],['AST-00001','Apple MacBook Air M2','Not yet surrendered after offboarding',chip('Unreturned', C.unret)]].map(r => `
+          <div class="p-2 mb-1.5 rounded-lg border border-slate-200 dark:border-slate-700"><div class="flex justify-between"><b class="text-[10px]">${r[0]}</b>${r[3]}</div><div class="text-[10px] font-semibold">${r[1]}</div><div class="text-[9px] text-rose-600">${r[2]}</div></div>`).join('')}
+        </div>
+      </div>`
+  },
+  detail: {
+    tab: 'Asset record', nav: 'Assets', badge: 'scrAssetDetail', title: 'Asset record & lifecycle',
+    desc: 'Specs, custody history and the actions allowed for the item’s current status.',
+    annotations: [
+      { num: 1, title: 'Buttons follow the status', detail: 'One table lists every action with the statuses it is allowed in. A deployed laptop offers Reassign, Return, Repair, Mark lost; an in-stock one offers Deploy and Loan. Impossible moves never appear.' },
+      { num: 2, title: 'Custody history', detail: 'Every action writes a row to AssetMovements: who, from whom, condition, date and who processed it. A saved form adds a “Signed form” link.' },
+      { num: 3, title: 'Linked SIM and licenses', detail: 'A phone shows the SIM line inside it and any licenses tied to the device, each one click away.' }
+    ],
+    render: a => `
+      <div class="relative ${card} p-3 flex flex-wrap items-center justify-between gap-2 ${ring(1, a)}">${pin(1, a)}
+        <div><span class="font-bold text-xs text-navy-600 dark:text-amber-400">AST-00188</span> <b class="text-xs">· Xiaomi Redmi Note 13</b> ${chip('Deployed', C.deployed)}<div class="text-[10px] text-slate-500">Serial: XI8C3RQ3LH · Head Office</div></div>
+        <div class="flex gap-1">${['Reassign','Return','Send for repair','Print form'].map(b => `<span class="text-[10px] px-2 py-1 rounded-md border border-slate-300 bg-white dark:bg-slate-800">${b}</span>`).join('')}<span class="text-[10px] px-2 py-1 rounded-md border border-rose-200 text-rose-700 bg-white">Mark lost</span></div>
+      </div>
+      <div class="grid grid-cols-5 gap-2 mt-3">
+        <div class="col-span-3 ${card} p-3 text-[10px] grid grid-cols-2 gap-x-3 gap-y-2">
+          ${[['Brand','Xiaomi'],['Model','Redmi Note 13'],['Current custodian','Gabriel N. Tolentino'],['Department','Sales'],['Condition','Good'],['Warranty expiry','Jul 15, 2027']].map(f => `<div><div class="text-slate-400">${f[0]}</div><b>${f[1]}</b></div>`).join('')}
+        </div>
+        <div class="col-span-2 space-y-2">
+          <div class="relative ${card} p-3 ${ring(2, a)}">${pin(2, a)}
+            <div class="text-xs font-bold mb-2">Custody history</div>
+            <div class="border-l-2 border-slate-200 pl-3 space-y-2 text-[10px]">
+              <div><b>Deployed to Gabriel N. Tolentino</b><div class="text-slate-500">Aug 8, 2026 · Condition: Good</div><div class="text-navy-600 underline">Signed form ↗</div></div>
+              <div><b>Received</b><div class="text-slate-500">Jul 15, 2026 · from supplier</div></div>
+            </div>
+          </div>
+          <div class="relative ${card} p-3 text-[10px] ${ring(3, a)}">${pin(3, a)}
+            <div class="text-xs font-bold mb-1">Linked items</div>
+            <div class="flex justify-between"><span><span class="px-1.5 rounded bg-blue-100 text-blue-800 text-[9px]">GLOBE SIM</span> 0917•••0095 · Plan 999</span><span class="text-navy-600">View →</span></div>
+          </div>
+        </div>
+      </div>`
+  },
+  employees: {
+    tab: 'Employees', nav: 'Employees', badge: 'scrEmployees', title: 'Employee custody & offboarding',
+    desc: 'Everything a person holds across hardware, SIM lines and software, plus IT clearance in one click.',
+    annotations: [
+      { num: 1, title: 'One custody list', detail: 'Hardware, SIM lines and license seats for the selected employee merged into a single gallery, each row opening its own record.' },
+      { num: 2, title: 'One-click offboarding', detail: 'Marks their hardware Unreturned, suspends their SIM lines, revokes license seats and returns them to the pool, sets the employee to Resigned and logs every change.' }
+    ],
+    render: a => `
+      <div class="grid grid-cols-5 gap-2">
+        <div class="col-span-2 ${card} p-2 text-[10px] space-y-1">
+          <div class="text-xs font-bold px-1 pb-1">Employees</div>
+          ${['Nicole P. Aquino','Patricia F. Bautista','Shiela C. Bautista','Christian R. Castillo'].map((n, i) => `<div class="flex justify-between items-center p-1.5 rounded ${i === 0 ? 'bg-navy-50 dark:bg-slate-800' : ''}"><b>${n}</b>${chip('Active', C.stock)}</div>`).join('')}
+        </div>
+        <div class="col-span-3 space-y-2">
+          <div class="relative ${card} p-3 flex items-center justify-between ${ring(2, a)}">${pin(2, a)}
+            <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-navy-600 text-white text-[10px] font-bold flex items-center justify-center">NA</span><div><b class="text-xs">Nicole P. Aquino</b><div class="text-[10px] text-slate-500">EMP-0037 · Financial Analyst</div></div></div>
+            <span class="text-[10px] px-2.5 py-1 rounded-md bg-rose-600 text-white font-semibold">Offboard</span>
+          </div>
+          <div class="relative ${card} p-3 text-[10px] ${ring(1, a)}">${pin(1, a)}
+            <div class="flex justify-between mb-2"><b class="text-xs">Assigned IT items</b><span class="px-2 rounded-full bg-navy-50 text-navy-600">7 assigned items</span></div>
+            ${[['HARDWARE','Apple iPhone 13','AST-00155',chip('Deployed', C.deployed)],['SIM LINE','Globe Business Plan 999','0905•••4432',chip('Active', C.stock)],['SOFTWARE','Microsoft 365 Business Standard','LIC-1',chip('Active', C.stock)]].map(r => `<div class="flex items-center justify-between py-1.5 border-b border-slate-100 dark:border-slate-800"><span><span class="text-[8px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800">${r[0]}</span> <b>${r[1]}</b> <span class="text-slate-400">${r[2]}</span></span>${r[3]}</div>`).join('')}
+          </div>
+        </div>
+      </div>`
+  },
+  mobile: {
+    tab: 'Mobile & SIMs', nav: 'Mobile & SIMs', badge: 'scrMobile', title: 'Corporate mobile & SIM lines',
+    desc: 'Lines, plans and monthly cost per department, with the phone each SIM sits in.',
+    annotations: [
+      { num: 1, title: 'SIMs separate from phones', detail: 'A SIM line is its own record pointing to the handset it is in. When a phone breaks, the number moves to a new device and keeps its plan and history.' },
+      { num: 2, title: 'Cost by department', detail: 'GroupBy and Sum over the loaded lines give a live monthly telecom cost per department.' }
+    ],
+    render: a => `
+      <div class="grid grid-cols-5 gap-2">
+        <div class="relative col-span-3 ${card} p-2 text-[10px] ${ring(1, a)}">${pin(1, a)}
+          <div class="grid grid-cols-12 font-semibold text-slate-400 text-[9px] px-1 pb-1"><div class="col-span-4">NUMBER</div><div class="col-span-4">PLAN</div><div class="col-span-4">USER / HANDSET</div></div>
+          ${[['0905•••4227','Globe Plan 999','Erica D. Santos','AST-00175',chip('Active', C.stock)],['0905•••8877','Globe Plan 599','Francis V. Aquino','No phone linked',chip('Suspended', C.susp)],['0905•••4698','Globe Plan 999','— Spare SIM pool —','',chip('Available', C.stock)]].map(r => `
+          <div class="grid grid-cols-12 items-center px-1 py-1.5 border-t border-slate-100 dark:border-slate-800"><b class="col-span-4">${r[0]}</b><div class="col-span-4">${r[1]}</div><div class="col-span-4">${r[2]}<div class="text-slate-400 text-[9px]">${r[3]}</div>${r[4]}</div></div>`).join('')}
+        </div>
+        <div class="relative col-span-2 ${card} p-3 text-[10px] ${ring(2, a)}">${pin(2, a)}
+          <div class="flex justify-between mb-2"><b class="text-xs">Cost by department</b><span class="text-slate-400">₱29,466 / mo</span></div>
+          ${[['Finance',6293],['Executive',4495],['Sales',3996],['HR',3396],['IT',3096]].map(d => `<div class="mb-1.5"><div class="flex justify-between"><span>${d[0]}</span><b>₱${d[1].toLocaleString()}</b></div><div class="h-1.5 rounded bg-slate-100 dark:bg-slate-800"><div class="h-1.5 rounded bg-navy-600" style="width:${d[1] / 65}%"></div></div></div>`).join('')}
+        </div>
+      </div>`
+  },
+  forms: {
+    tab: 'Printed forms', nav: 'Assets', badge: 'scrPrint', title: 'Accountability & turnover forms',
+    desc: 'A signed-paper trail without Word templates: the app builds the form, makes a PDF and stores it.',
+    annotations: [
+      { num: 1, title: 'Form built from the record', detail: 'An HTML text control renders the A4 form from the asset, the employee and the deployment or return record: equipment details, terms of accountability and signature lines.' },
+      { num: 2, title: 'PDF saved to SharePoint', detail: 'PDF() turns the form into a file, a Power Apps (V2) flow saves it to the Asset Forms library, and the link is written back to the custody history.' }
+    ],
+    render: a => `
+      <div class="flex justify-end gap-1 mb-2"><span class="text-[10px] px-2 py-1 rounded-md bg-navy-600 text-white">Accountability</span><span class="text-[10px] px-2 py-1 rounded-md border border-slate-300 bg-white dark:bg-slate-800">Turnover</span>
+        <span class="relative text-[10px] px-2 py-1 rounded-md bg-navy-600 text-white ${ring(2, a)}">${pin(2, a, '-top-2 -right-2')}Save PDF to SharePoint</span></div>
+      <div class="relative mx-auto max-w-sm bg-white text-slate-900 rounded shadow p-4 text-[9px] ${ring(1, a)}">${pin(1, a)}
+        <div class="flex justify-between"><div><div class="text-slate-400 tracking-widest">DEMO COMPANY INC.</div><div class="text-sm font-bold text-navy-600">IT ASSET ACCOUNTABILITY FORM</div></div><div class="text-right text-slate-500">Form No. <b>AF-00187</b><br>Aug 8, 2026</div></div>
+        <div class="h-0.5 bg-navy-600 my-2"></div>
+        <div class="font-bold text-navy-600 tracking-wider">EMPLOYEE</div>
+        <div class="grid grid-cols-2 border border-slate-200 my-1"><div class="p-1 bg-slate-50">Name</div><div class="p-1 font-semibold">Gabriel N. Tolentino</div></div>
+        <div class="font-bold text-navy-600 tracking-wider mt-1">EQUIPMENT</div>
+        <div class="grid grid-cols-2 border border-slate-200 my-1"><div class="p-1 bg-slate-50">Asset / serial</div><div class="p-1 font-semibold">AST-00188 · XI8C3RQ3LH</div></div>
+        <div class="text-slate-600 mt-1">1. I acknowledge receipt of the equipment above in the condition stated…</div>
+        <div class="grid grid-cols-3 gap-3 mt-5 text-center"><div class="border-t border-slate-800 pt-1">Received by</div><div class="border-t border-slate-800 pt-1">Issued by (IT)</div><div class="border-t border-slate-800 pt-1">Noted by</div></div>
+      </div>`
+  }
+};
+const NAV = ['Dashboard', 'Assets', 'Employees', 'Mobile & SIMs', 'Software', 'Settings'];
+
+let currentScreen = 'dashboard', currentPin = 1;
+function buildTabs() {
+  document.getElementById('screen-tabs').innerHTML = Object.entries(screensData).map(([k, s]) =>
+    `<button onclick="switchScreen('${k}')" id="tab-${k}" class="screen-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition">${s.tab}</button>`).join('');
+}
+function switchScreen(k) { currentScreen = k; currentPin = 1; render(); }
+function highlightPin(n) { currentPin = n; render(); }
+function render() {
+  const d = screensData[currentScreen];
+  document.querySelectorAll('.screen-tab').forEach(b => {
+    const on = b.id === 'tab-' + currentScreen;
+    b.className = 'screen-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition ' +
+      (on ? 'bg-white dark:bg-slate-800 text-navy-600 dark:text-amber-400 shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white');
+  });
+  document.getElementById('mock-sidebar').innerHTML =
+    `<div class="px-3 pb-3 mb-2 border-b border-white/10"><div class="text-white font-bold text-[11px]">ASSET MANAGER</div><div class="text-[9px] text-slate-400">IT · ENTERPRISE ASSETS</div></div>` +
+    NAV.map(n => `<div class="mx-2 px-2 py-1.5 rounded-md ${n === d.nav ? 'bg-[#144866] text-white border-l-2 border-amber-500' : ''}">${n}</div>`).join('');
+  document.getElementById('screen-viewport').innerHTML = d.render(currentPin);
+  document.getElementById('screen-badge').textContent = d.badge;
+  document.getElementById('annotation-title').textContent = d.title;
+  document.getElementById('annotation-desc').textContent = d.desc;
+  document.getElementById('annotation-list').innerHTML = d.annotations.map(i => {
+    const on = i.num === currentPin;
+    return `<button onclick="highlightPin(${i.num})" class="w-full text-left p-3 rounded-xl border transition ${on ? 'border-navy-600 bg-navy-50 dark:bg-slate-800 dark:border-amber-500' : 'border-slate-200 dark:border-slate-800 hover:border-slate-300'}">
+      <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full ${on ? 'bg-amber-500' : 'bg-navy-600'} text-white text-[11px] font-bold flex items-center justify-center shrink-0">${i.num}</span><span class="font-bold text-xs">${i.title}</span></div>
+      <p class="mt-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-7">${i.detail}</p></button>`;
+  }).join('');
+  lucide.createIcons();
+}
+
+/* ==========================================================
+   3. Design decisions, architecture, data model
+   ========================================================== */
+const decisions = [
+  ['type', 'Text columns, not Choice columns', 'Every dropdown is stored as plain text. SharePoint can filter text columns server-side, so search and filters keep working past the 2,000-row limit.'],
+  ['list-checks', 'Dropdowns managed by admins', 'Categories, locations, departments and statuses live in a Lookups list. Admins add or retire values in Settings — no app edit, no column change.'],
+  ['smartphone', 'Phones and SIMs kept separate', 'A SIM line points to the handset it is in. The number keeps its plan and history when the phone is replaced.'],
+  ['history', 'Nothing changes silently', 'Every deploy, return, repair, loss, plan change and seat assignment writes a row to the movement log: a full chain of custody.'],
+  ['git-branch', 'Status rules drive the buttons', 'Actions are data: each lists the statuses it is allowed in. The screen only offers moves that make sense for the item right now.'],
+  ['shield-check', 'Roles without passwords', 'The app reads the Microsoft 365 sign-in and checks an AppRoles list. Admins manage settings, IT staff act, viewers only look.'],
+  ['zap', 'Fast start, few calls', 'Summary data loads once in parallel; screens count from memory. Large lists are read in pages with delegable StartsWith filters.'],
+  ['file-text', 'Forms without Word templates', 'Accountability and turnover forms are rendered in the app, turned into PDF and saved by a standard Power Automate flow.']
+];
+const archNodes = {
+  ui: ['layout', 'Power Apps canvas app', '9 screens', 'Client', [
+    'Shared colors, status colors, menu and the user’s role defined once as named formulas and reused on every screen.',
+    'Sidebar, dialogs and cards built from the same patterns, so every screen looks and behaves alike.',
+    'Screens kept as Power Apps YAML source and rebuilt from code.']],
+  logic: ['cpu', 'App logic', 'Power Fx', 'Rules', [
+    'Status-driven action tables for assets and SIM lines.',
+    'One-click offboarding updates four lists and logs each change.',
+    'Next asset tag and employee ID generated automatically; duplicate serial numbers blocked.']],
+  data: ['database', 'SharePoint lists', '9 lists, indexed', 'Storage', [
+    'Single line text for every dropdown field, values seeded into the Lookups list.',
+    'Indexed columns on the fields used for filtering (status, category, employee, dates).',
+    'Lists created and seeded by a repeatable script, so a new tenant is set up in minutes.']],
+  flow: ['workflow', 'Power Automate', 'Power Apps (V2) trigger', 'Automation', [
+    'Receives the generated PDF and a file name from the app.',
+    'Creates the file in SharePoint and returns its link to the app.',
+    'Standard connectors only — no premium license.']],
+  docs: ['folder-check', 'Asset Forms library', 'Signed PDFs', 'Records', [
+    'Accountability (AF-…) and turnover (TF-…) forms stored per asset and transaction.',
+    'Each form is linked from the asset’s custody history.']]
+};
+const model = [
+  ['Assets', 'Every physical item: laptops, phones, monitors, network gear', 'Status, condition, custodian, warranty, cost'],
+  ['Employees', 'People who can hold items', 'Department, company, location, supervisor, employment status'],
+  ['AssetMovements', 'The custody and lifecycle log', 'One row per action; link to the signed form'],
+  ['MobileLines', 'SIM cards and numbers', 'Plan, fee, assigned person, handset tag, contract end'],
+  ['MobilePlans', 'Carrier plans', 'Monthly fee and contract length'],
+  ['SoftwareLicenses', 'Subscriptions and licenses', 'Seats, cost, billing cycle, renewal date'],
+  ['LicenseAssignments', 'Who uses which seat', 'Employee, license, optional device'],
+  ['Lookups', 'All dropdown values', 'Group, sort order, active flag'],
+  ['AppRoles', 'Who can use the app', 'Admin, IT staff or Viewer'],
+  ['Asset Forms (library)', 'Generated PDF forms', 'Accountability and turnover']
+];
+
+/* ==========================================================
+   4. Code snippets (taken from the app)
+   ========================================================== */
+const codeSnippets = {
+  load: { label: 'App start', file: 'App.OnStart', caption: 'Loads the summary data in parallel. The dashboard counts from these collections instead of hitting SharePoint for every tile.', code:
+`Set(varLoading, true);
+Concurrent(
+    ClearCollect(colAssets, ShowColumns(Assets, Title, Category, Brand, Model, Status,
+        CurrentEmployeeName, WarrantyEnd, ExpectedReturnDate, Department, UnitCost)),
+    ClearCollect(colLines, ShowColumns(MobileLines, Title, Carrier, PlanName, MonthlyFee,
+        Status, AssignedEmployeeName, Department, ContractEnd)),
+    ClearCollect(colLicenses, SoftwareLicenses),
+    ClearCollect(colLookups, Filter(Lookups, IsActive = true))
+);
+Set(varLoadedAt, Now());
+Set(varLoading, false)` },
+  offboard: { label: 'Offboarding', file: 'scrEmployees › Offboard › OnSelect', caption: 'One confirmation clears an employee across hardware, SIM lines and licenses, and logs every change.', code:
+`With({e: varEmp},
+    ClearCollect(colOffAssets, Filter(Assets, CurrentEmployeeID = varEmp.Title &&
+        (Status = "Deployed" || Status = "Temporary Loan")));
+    ClearCollect(colOffLines, Filter(MobileLines, AssignedEmployeeID = varEmp.Title && Status = "Active"));
+    ClearCollect(colOffLic, Filter(LicenseAssignments, EmployeeID = varEmp.Title && Status = "Active"));
+
+    ForAll(colOffAssets As x,
+        Patch(Assets, LookUp(Assets, ID = x.ID), {Status: "Unreturned"});
+        Patch(AssetMovements, Defaults(AssetMovements), {Title: x.Title, ItemType: "Hardware",
+            Action: "Marked Unreturned", FromEmployeeID: e.Title, FromEmployeeName: e.FullName,
+            ActionDate: Today(), ProcessedBy: User().FullName, Notes: "Employee offboarded"}));
+    ForAll(colOffLines As x,
+        Patch(MobileLines, LookUp(MobileLines, ID = x.ID), {Status: "Suspended"}));
+    ForAll(colOffLic As x,
+        Patch(LicenseAssignments, LookUp(LicenseAssignments, ID = x.ID), {Status: "Revoked"});
+        With({lic: LookUp(SoftwareLicenses, ID = x.LicenseID)},
+            Patch(SoftwareLicenses, lic, {SeatsUsed: Max(0, lic.SeatsUsed - 1)})));
+
+    Set(varEmp, Patch(Employees, e, {EmploymentStatus: "Resigned"}))
+)` },
+  pdf: { label: 'Save PDF', file: 'scrPrint › Save › OnSelect', caption: 'Turns the on-screen form into a PDF, saves it through a Power Automate flow and links it to the custody history.', code:
+`Set(varSaving, true);
+With({fn: If(varPrintKind = "Turnover", "TF-", "AF-") & varAsset.Title & "-" &
+          Text(varPrintMove.ID, "00000") & ".pdf"},
+    Set(varFormUrl, ITAMSaveFormPDF.Run(fn,
+        {file: {name: fn, contentBytes: PDF(conPrtPage, {Size: "A4", ExpandContainers: true})}}
+    ).fileurl)
+);
+If(IsBlank(varFormUrl),
+    Notify("The form could not be saved.", NotificationType.Error),
+    Patch(AssetMovements, LookUp(AssetMovements, ID = varPrintMove.ID), {FormLink: varFormUrl});
+    Notify("Form saved to SharePoint", NotificationType.Success)
+);
+Set(varSaving, false)` },
+  yaml: { label: 'Screen YAML', file: 'scrDashboard.pa.yaml (excerpt)', caption: 'Screens are kept as Power Apps YAML source. This is the status-bar list on the dashboard.', code:
+`- DashBars:
+    Control: Gallery
+    Variant: Vertical
+    Properties:
+      Items: =SortByColumns(AddColumns(GroupBy(colAssets, Status, Grp), Cnt, CountRows(Grp)),
+               Cnt, SortOrder.Descending)
+      TemplateSize: =46
+      OnSelect: =Set(varStatusFilter, ThisItem.Status); Navigate(scrAssets, ScreenTransition.None)
+    Children:
+    - DashBarDot:
+        Control: Rectangle
+        Properties:
+          Fill: =ColorValue(Coalesce(LookUp(nfChips, S = ThisItem.Status).Bar, "#64748B"))
+          OnSelect: =Select(Parent)` }
+};
+
+/* ==========================================================
+   5. Other work (edit freely)
+   ========================================================== */
+const projects = [
+  ['Quality & compliance', 'Canvas + SharePoint', 'Certificate of Analysis (COA) Management System',
+   'Freelance build for a food manufacturer: preparers create certificates, reviewers and approvers sign off by role, and approved COAs print to the QA team’s folders. Live since October 2026.',
+   ['Power Apps', 'Role-based approvals', 'PDF output']],
+  ['Health & inventory', 'Canvas + SharePoint + Flow', 'Clinic Inventory Management System',
+   'Company clinic stock: item receipt, issuance with requestor and department, stock-count adjustments, a transaction log, outpatient records fed by a Microsoft Form, and expiry notifications.',
+   ['Power Apps', 'Microsoft Forms', 'Power Automate']],
+  ['HR', 'Canvas + SharePoint', 'Employment Application Portal',
+   'Applicants fill in a full employment application with work history and family details, saved as a draft or submitted for HR review.',
+   ['Power Apps', 'Multi-list forms', 'Draft / submit']],
+  ['IT service', 'Forms + Flow + SharePoint', 'IT Help Desk ticketing',
+   'Ticket intake through Microsoft Forms, routing and tracking in SharePoint by Power Automate, and a customer satisfaction survey after resolution.',
+   ['Power Automate', 'Microsoft Forms', 'SharePoint']]
+];
+
+/* ==========================================================
+   6. Wiring
+   ========================================================== */
+function applyConfig() {
+  CONFIG.email = CONFIG.emailUser + '@' + CONFIG.emailDomain;
+  document.getElementById('email-text').textContent = CONFIG.email;
+  document.querySelectorAll('[data-cfg]').forEach(el => { const v = CONFIG[el.dataset.cfg]; if (v) el.textContent = v; });
+  document.querySelectorAll('[data-cfg-href]').forEach(el => {
+    const v = CONFIG[el.dataset.cfgHref];
+    if (v) el.href = v;
+    else { el.removeAttribute('target'); el.addEventListener('click', e => { e.preventDefault(); showToast('This link isn’t set up yet.'); }); }
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // screenshots
+  document.getElementById('shot-grid').innerHTML = CONFIG.screenshots.map(s => s.src
+    ? `<figure class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"><a href="${s.src}" target="_blank"><img src="${s.src}" alt="${s.caption}" loading="lazy" class="w-full aspect-[16/9] ${s.fit === 'contain' ? 'object-contain bg-slate-100 dark:bg-slate-800' : 'object-cover object-top'}"></a><figcaption class="p-3 text-xs text-slate-600 dark:text-slate-400">${s.caption}</figcaption></figure>`
+    : `<figure class="rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 p-6 aspect-[16/10] flex flex-col items-center justify-center text-center text-xs text-slate-400"><i data-lucide="image-plus" class="w-6 h-6 mb-2"></i>${s.caption}<span class="mt-1 text-[10px]">(screenshot coming)</span></figure>`).join('');
+}
+function buildStatic() {
+  document.getElementById('decision-grid').innerHTML = decisions.map(d => `
+    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+      <div class="w-9 h-9 rounded-lg bg-navy-600 text-amber-400 flex items-center justify-center mb-3"><i data-lucide="${d[0]}" class="w-4 h-4"></i></div>
+      <h3 class="font-bold text-sm">${d[1]}</h3><p class="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${d[2]}</p></div>`).join('');
+  document.getElementById('arch-nodes').innerHTML = Object.entries(archNodes).map(([k, n], i) => `
+    <button onclick="selectArch('${k}')" id="arch-${k}" class="arch-node text-left p-4 rounded-xl border transition">
+      <div class="flex items-center justify-between mb-2"><span class="p-2 rounded-lg bg-navy-600 text-amber-400"><i data-lucide="${n[0]}" class="w-4 h-4"></i></span><span class="text-[10px] font-mono text-slate-400">0${i + 1} / ${n[3].toUpperCase()}</span></div>
+      <h4 class="font-bold text-sm">${n[1]}</h4><p class="text-xs text-slate-500 mt-1">${n[2]}</p></button>`).join('');
+  document.getElementById('model-rows').innerHTML = model.map(m => `<tr><td class="px-4 py-2.5 font-mono text-xs font-semibold text-navy-600 dark:text-amber-400">${m[0]}</td><td class="px-4 py-2.5">${m[1]}</td><td class="px-4 py-2.5 text-slate-500 hidden md:table-cell">${m[2]}</td></tr>`).join('');
+  document.getElementById('code-tabs').innerHTML = Object.entries(codeSnippets).map(([k, c]) => `<button onclick="switchCode('${k}')" id="code-tab-${k}" class="code-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition">${c.label}</button>`).join('');
+  document.getElementById('project-grid').innerHTML = projects.map(p => `
+    <article class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between">
+      <div><div class="flex items-center justify-between gap-2 mb-3"><span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-navy-50 dark:bg-slate-800 text-navy-600 dark:text-amber-400">${p[0]}</span><span class="text-xs font-mono text-slate-400">${p[1]}</span></div>
+      <h3 class="text-lg font-bold">${p[2]}</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">${p[3]}</p></div>
+      <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-1.5">${p[4].map(t => `<span class="text-[11px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">${t}</span>`).join('')}</div>
+    </article>`).join('');
+}
+function selectArch(k) {
+  document.querySelectorAll('.arch-node').forEach(n => {
+    const on = n.id === 'arch-' + k;
+    n.className = 'arch-node text-left p-4 rounded-xl border transition ' + (on ? 'border-2 border-navy-600 dark:border-amber-500 bg-navy-50 dark:bg-slate-800' : 'border-slate-200 dark:border-slate-800 hover:border-slate-400 bg-slate-50/60 dark:bg-slate-950/60');
+  });
+  const n = archNodes[k];
+  document.getElementById('arch-detail').innerHTML = `<h4 class="font-bold">${n[1]} <span class="text-xs font-medium text-slate-500">· ${n[2]}</span></h4>
+    <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">${n[4].map(s => `<li class="flex gap-2"><span class="text-amber-500 font-bold">•</span><span>${s}</span></li>`).join('')}</ul>`;
+  lucide.createIcons();
+}
+let activeCode = 'load';
+function switchCode(k) {
+  activeCode = k;
+  document.querySelectorAll('.code-tab').forEach(b => {
+    b.className = 'code-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition ' + (b.id === 'code-tab-' + k ? 'bg-navy-600 text-white' : 'bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300');
+  });
+  const c = codeSnippets[k];
+  document.getElementById('code-filename').textContent = c.file;
+  document.getElementById('code-caption').textContent = c.caption;
+  document.getElementById('code-content').innerHTML = c.code.split('\n').map(l => `<div class="code-line">${escapeHtml(l)}</div>`).join('');
+}
+function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function copyText(text, msg) {
+  const done = () => showToast(msg);
+  if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done).catch(() => fallback()); }
+  else fallback();
+  function fallback() {
+    const t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+    document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); done(); } catch (e) { showToast('Copy failed — select the text manually.'); }
+    t.remove();
+  }
+}
+function copyCurrentCode() { copyText(codeSnippets[activeCode].code, 'Code copied'); }
+function copyEmail() { copyText(CONFIG.email, 'Email address copied'); }
+function showToast(m) {
+  const box = document.getElementById('toast-container'), t = document.createElement('div');
+  t.className = 'pointer-events-auto px-4 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-semibold shadow-lg transition-all duration-300';
+  t.textContent = m; box.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 3000);
+}
+// theme: follow system, remember choice
+(function () {
+  let saved = null; try { saved = localStorage.getItem('theme'); } catch (e) {}
+  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+})();
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const dark = document.documentElement.classList.toggle('dark');
+  try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+});
+window.addEventListener('DOMContentLoaded', () => {
+  applyConfig(); buildStatic(); buildTabs(); render(); selectArch('ui'); switchCode('load'); lucide.createIcons();
+});
+</script>
+</body>
+</html>
