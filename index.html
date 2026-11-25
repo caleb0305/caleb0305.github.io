@@ -53,7 +53,7 @@
         </div>
       </a>
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
-        <a href="#case-study" class="hover:text-navy-600 dark:hover:text-amber-400">See an example</a>
+        <a href="#case-study" class="hover:text-navy-600 dark:hover:text-amber-400">See examples</a>
         <a href="#how" class="hover:text-navy-600 dark:hover:text-amber-400">How it works</a>
         <a href="#projects" class="hover:text-navy-600 dark:hover:text-amber-400">Other work</a>
         <a href="#contact" class="hover:text-navy-600 dark:hover:text-amber-400">Contact</a>
@@ -85,7 +85,7 @@
           </p>
           <div class="mt-8 flex flex-wrap items-center gap-3">
             <a href="#case-study" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-navy-600 hover:bg-navy-500 text-white font-semibold text-sm shadow-md">
-              <i data-lucide="eye" class="w-4 h-4"></i><span>See an example app</span>
+              <i data-lucide="eye" class="w-4 h-4"></i><span>See example apps</span>
             </a>
             <a data-cfg-href="demoFormUrl" href="#contact" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-semibold text-sm hover:border-slate-400">
               <i data-lucide="calendar-check" class="w-4 h-4 text-amber-500"></i><span>Ask for a free demo</span>
@@ -107,16 +107,17 @@
     <!-- CASE STUDY -->
     <section id="case-study" class="py-16 sm:py-20">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Pick an example</span>
+          <div class="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-slate-200/70 dark:bg-slate-900 border border-slate-200 dark:border-slate-800" role="tablist" id="app-switch"></div>
+        </div>
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-slate-200 dark:border-slate-800">
           <div>
             <div class="flex flex-wrap items-center gap-2.5 mb-3">
               <span class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-navy-600 text-white">Example project</span>
             </div>
-            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">IT Asset Manager</h2>
-            <p class="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base">
-              One place to keep track of every company laptop, phone, SIM card and software subscription — who has it, what happened to it,
-              and what needs attention today.
-            </p>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight" id="app-name"></h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base" id="app-tagline"></p>
           </div>
           <a href="#tech" onclick="document.getElementById('tech-body').classList.remove('hidden'); document.getElementById('tech-chev').style.transform='rotate(180deg)'" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 self-start lg:self-auto">
             <i data-lucide="file-code" class="w-4 h-4 text-navy-600 dark:text-amber-400"></i>Technical details for IT
@@ -128,26 +129,17 @@
           <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
             <div class="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
             <h3 class="font-bold">The problem</h3>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Nobody is sure who has which laptop or phone. Borrowed items are returned late or not at all. Phone bills grow without anyone noticing,
-              and when someone resigns, their equipment is easy to forget. The spreadsheet is out of date the day after it's updated.
-            </p>
+            <p id="app-problem" class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed"></p>
           </div>
           <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
             <div class="w-10 h-10 rounded-xl bg-navy-50 dark:bg-navy-900/60 text-navy-600 dark:text-amber-400 flex items-center justify-center mb-4"><i data-lucide="cpu" class="w-5 h-5"></i></div>
             <h3 class="font-bold">What the app does</h3>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              A dashboard shows what needs attention today. Each item has its own page showing who has it now and everyone who had it before.
-              Staff hand items out, take them back or send them for repair with a few clicks, and the app fills in the signed accountability form for them.
-            </p>
+            <p id="app-solution" class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed"></p>
           </div>
           <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
             <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
             <h3 class="font-bold">What changes for your team</h3>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              When someone resigns, one click lists everything they still hold. Overdue loans and expiring contracts show up before they become problems.
-              Monthly phone costs are totalled per department. And it all runs in the Microsoft 365 you already use — no new system to buy.
-            </p>
+            <p id="app-changes" class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed"></p>
           </div>
         </div>
 
@@ -163,7 +155,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             <div class="lg:col-span-8 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-900 shadow-xl overflow-hidden">
               <div class="h-9 bg-[#742774] text-white px-4 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-2.5"><span class="font-semibold">Power Apps</span><span class="opacity-50">|</span><span class="text-purple-100">Asset Manager</span></div>
+                <div class="flex items-center gap-2.5"><span class="font-semibold">Power Apps</span><span class="opacity-50">|</span><span class="text-purple-100" id="mock-appname"></span></div>
                 <span class="hidden sm:inline-flex items-center gap-1 text-[11px] bg-white/15 px-2 py-0.5 rounded"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>SharePoint</span>
               </div>
               <div class="flex min-h-[440px]">
@@ -234,7 +226,7 @@
     <section id="tech" class="py-12 border-t border-slate-200/80 dark:border-slate-800/80">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <button onclick="toggleTech()" class="w-full flex items-center justify-between gap-4 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-400 text-left">
-          <span><span class="block font-bold">For IT teams: technical details</span><span class="block text-xs text-slate-500 mt-0.5">Architecture, data model and real Power Fx code from the app</span></span>
+          <span><span class="block font-bold">For IT teams: technical details</span><span class="block text-xs text-slate-500 mt-0.5">Architecture, data model and real Power Fx code from the <b id="tech-appname"></b> app</span></span>
           <i id="tech-chev" data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
         </button>
       </div>
@@ -267,7 +259,7 @@
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-5">
           <div>
             <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="terminal" class="w-6 h-6 text-navy-600 dark:text-amber-400"></i>Real code from the app</h2>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">The screens are kept as Power Apps YAML source, so the whole app is versioned and rebuilt from code.</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1" id="code-intro"></p>
           </div>
           <div class="flex flex-wrap items-center gap-2" id="code-tabs"></div>
         </div>
@@ -340,15 +332,7 @@ const CONFIG = {
   initials: 'CL',
   // email is split so simple spam bots can't read it from the page source
   emailUser: 'logroniocaleb1', emailDomain: 'gmail.com',
-  demoFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScSg5F0uy23Ow-9PEOyt9Ce8T_X_WVa69aUBpyK_wqJzQXcAg/viewform',   // Google Form: Request a Demo
-  screenshots: [
-    { src: 'img/01-dashboard.webp', caption: 'Dashboard — what you have, what needs chasing and what is due soon' },
-    { src: 'img/02-assets.webp', caption: 'Inventory — find any item by tag, model, serial number or person' },
-    { src: 'img/03-asset-record.webp', caption: 'One item — its details, who has it, its history and its SIM card' },
-    { src: 'img/04-employees.webp', caption: 'Employees — everything a person holds, and one-click clearance when they leave' },
-    { src: 'img/05-mobile-sims.webp', caption: 'Company phones — numbers, plans and monthly cost per department' },
-    { src: 'img/06-accountability-form.webp', caption: 'Accountability form — filled in by the app and saved as PDF', fit: 'contain' }
-  ]
+  demoFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScSg5F0uy23Ow-9PEOyt9Ce8T_X_WVa69aUBpyK_wqJzQXcAg/viewform'   // Google Form: Request a Demo
 };
 
 /* ==========================================================
@@ -368,7 +352,7 @@ const pin = (n, active, pos = '-top-2 -left-2') =>
   `<button onclick="highlightPin(${n})" aria-label="Note ${n}" class="pin absolute ${pos} z-10 w-5 h-5 rounded-full ${active === n ? 'bg-amber-500' : 'bg-navy-600'} text-white text-[10px] font-bold flex items-center justify-center shadow">${n}</button>`;
 const ring = (n, active) => active === n ? 'ring-2 ring-amber-500/60 border-amber-400' : '';
 
-const screensData = {
+const assetScreens = {
   dashboard: {
     tab: 'Dashboard', nav: 'Dashboard', badge: 'scrDashboard', title: 'IT asset overview',
     desc: 'The first screen of the day: what you have, what needs chasing and what is coming up.',
@@ -495,7 +479,7 @@ const screensData = {
       </div>`
   }
 };
-const NAV = ['Dashboard', 'Assets', 'Employees', 'Mobile & SIMs', 'Software', 'Settings'];
+const assetNav = ['Dashboard', 'Assets', 'Employees', 'Mobile & SIMs', 'Software', 'Settings'];
 
 let currentScreen = 'dashboard', currentPin = 1;
 function buildTabs() {
@@ -512,7 +496,7 @@ function render() {
       (on ? 'bg-white dark:bg-slate-800 text-navy-600 dark:text-amber-400 shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white');
   });
   document.getElementById('mock-sidebar').innerHTML =
-    `<div class="px-3 pb-3 mb-2 border-b border-white/10"><div class="text-white font-bold text-[11px]">ASSET MANAGER</div><div class="text-[9px] text-slate-400">IT · ENTERPRISE ASSETS</div></div>` +
+    `<div class="px-3 pb-3 mb-2 border-b border-white/10"><div class="text-white font-bold text-[11px]">${APP.sidebarTitle}</div><div class="text-[9px] text-slate-400">${APP.sidebarSub}</div></div>` +
     NAV.map(n => `<div class="mx-2 px-2 py-1.5 rounded-md ${n === d.nav ? 'bg-[#144866] text-white border-l-2 border-amber-500' : ''}">${n}</div>`).join('');
   document.getElementById('screen-viewport').innerHTML = d.render(currentPin);
   document.getElementById('annotation-title').textContent = d.title;
@@ -529,7 +513,7 @@ function render() {
 /* ==========================================================
    3. Design decisions, architecture, data model
    ========================================================== */
-const decisions = [
+const assetDecisions = [
   ['mouse-pointer-click', 'Easy for anyone', 'Clear screens and only the buttons that make sense. New staff learn it in minutes.'],
   ['history', 'Nothing gets lost', 'Every hand-over, return, repair and plan change is recorded with who did it and when.'],
   ['bell-ring', 'Problems show up early', 'Late returns, expiring contracts and renewals appear on the dashboard before they cost money.'],
@@ -539,7 +523,7 @@ const decisions = [
   ['file-text', 'Paperwork done for you', 'Accountability and return forms are filled in automatically and saved as PDF.'],
   ['wallet', 'No new software to buy', 'Runs on the Microsoft 365 your company already pays for. Your data stays in your account.']
 ];
-const archNodes = {
+const assetArch = {
   ui: ['layout', 'Power Apps canvas app', '9 screens', 'Client', [
     'Shared colors, status colors, menu and the user’s role defined once as named formulas and reused on every screen.',
     'Sidebar, dialogs and cards built from the same patterns, so every screen looks and behaves alike.',
@@ -560,7 +544,7 @@ const archNodes = {
     'Accountability (AF-…) and turnover (TF-…) forms stored per asset and transaction.',
     'Each form is linked from the asset’s custody history.']]
 };
-const model = [
+const assetModel = [
   ['Assets', 'Every physical item: laptops, phones, monitors, network gear', 'Status, condition, custodian, warranty, cost'],
   ['Employees', 'People who can hold items', 'Department, company, location, supervisor, employment status'],
   ['AssetMovements', 'The custody and lifecycle log', 'One row per action; link to the signed form'],
@@ -576,7 +560,7 @@ const model = [
 /* ==========================================================
    4. Code snippets (taken from the app)
    ========================================================== */
-const codeSnippets = {
+const assetCode = {
   load: { label: 'App start', file: 'App.OnStart', caption: 'Loads the summary data in parallel. The dashboard counts from these collections instead of hitting SharePoint for every tile.', code:
 `Set(varLoading, true);
 Concurrent(
@@ -642,6 +626,366 @@ Set(varSaving, false)` },
 };
 
 /* ==========================================================
+   4b. Featured examples — the switcher shows one at a time.
+       Order here = order of the buttons; the first one shows by default.
+   ========================================================== */
+const assetShots = [
+    { src: 'img/01-dashboard.webp', caption: 'Dashboard — what you have, what needs chasing and what is due soon' },
+    { src: 'img/02-assets.webp', caption: 'Inventory — find any item by tag, model, serial number or person' },
+    { src: 'img/03-asset-record.webp', caption: 'One item — its details, who has it, its history and its SIM card' },
+    { src: 'img/04-employees.webp', caption: 'Employees — everything a person holds, and one-click clearance when they leave' },
+    { src: 'img/05-mobile-sims.webp', caption: 'Company phones — numbers, plans and monthly cost per department' },
+    { src: 'img/06-accountability-form.webp', caption: 'Accountability form — filled in by the app and saved as PDF', fit: 'contain' }
+  ];
+const assetApp = {
+  id: 'assets', switchLabel: 'IT assets', switchSub: 'Equipment tracking', icon: 'laptop',
+  name: 'IT Asset Manager',
+  tagline: 'One place to keep track of every company laptop, phone, SIM card and software subscription — who has it, what happened to it, and what needs attention today.',
+  problem: 'Nobody is sure who has which laptop or phone. Borrowed items are returned late or not at all. Phone bills grow without anyone noticing, and when someone resigns, their equipment is easy to forget. The spreadsheet is out of date the day after it\'s updated.',
+  solution: 'A dashboard shows what needs attention today. Each item has its own page showing who has it now and everyone who had it before. Staff hand items out, take them back or send them for repair with a few clicks, and the app fills in the signed accountability form for them.',
+  changes: 'When someone resigns, one click lists everything they still hold. Overdue loans and expiring contracts show up before they become problems. Monthly phone costs are totalled per department. And it all runs in the Microsoft 365 you already use — no new system to buy.',
+  titleBar: 'Asset Manager', sidebarTitle: 'ASSET MANAGER', sidebarSub: 'IT · ENTERPRISE ASSETS',
+  nav: assetNav, screens: assetScreens, screenshots: assetShots, decisions: assetDecisions,
+  archNodes: assetArch, model: assetModel, codeSnippets: assetCode,
+  codeIntro: 'The screens are kept as Power Apps YAML source, so the whole app is versioned and rebuilt from code.'
+};
+
+
+const PRC = {
+  draft:    'bg-slate-100 text-slate-700 border-slate-300',
+  head:     'bg-amber-50 text-amber-700 border-amber-200',
+  final:    'bg-violet-50 text-violet-700 border-violet-200',
+  approved: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  returned: 'bg-orange-50 text-orange-700 border-orange-200',
+  rejected: 'bg-rose-50 text-rose-700 border-rose-200',
+  ordered:  'bg-blue-50 text-blue-700 border-blue-200'
+};
+const peso = n => '₱' + n.toLocaleString('en-PH');
+
+const purchaseApp = {
+  id: 'purchase',
+  switchLabel: 'Purchase requests', switchSub: 'Requests & approvals', icon: 'check-circle',
+  codeIntro: 'Taken straight from the app’s formulas and screen source.',
+  name: 'Purchase Request & Approval',
+  tagline: 'One place to ask for, approve and track company purchases — from the first request to the item arriving, with every approval on record.',
+
+  problem: 'Purchase requests are on paper forms and in long email threads. Approvals sit in someone’s inbox for days, staff keep asking where their request is, big purchases sometimes go ahead without the owner seeing them, and when someone asks who approved a purchase, nobody can find the answer.',
+  solution: 'Staff fill in one short form with the items they need, and the app adds up the total. The request goes to their department head first, and to the owner as well when the amount is over your limit. Approvers get an email with a link straight to the request, and every step — approved, returned or rejected — is recorded with who did it and why.',
+  changes: 'Anyone can see where a request is at any time. Big purchases always reach the owner. Late approvals are flagged every weekday morning. Purchasing sees exactly what is approved and ready to order, and a printed request form with the approvers’ names is saved for your records. It all runs in the Microsoft 365 you already use.',
+
+  titleBar: 'Purchase Requests',
+  sidebarTitle: 'PURCHASE REQUESTS',
+  sidebarSub: 'NORTHBRIDGE TRADING',
+  nav: ['Dashboard', 'My Requests', 'New Request', 'Approvals', 'All Requests', 'Vendors', 'Settings'],
+
+  /* ---------- "Take a look inside" screens ---------- */
+  screens: {
+    dashboard: {
+      tab: 'Dashboard', nav: 'Dashboard', title: 'Purchasing at a glance',
+      desc: 'The first screen of the day: your requests, what is waiting for you and what the company has approved this month.',
+      annotations: [
+        { num: 1, title: 'Your numbers at a glance', detail: 'Your open requests, what is waiting for your approval, this month’s approved spending and anything waiting too long — always up to date.' },
+        { num: 2, title: 'Spending by department', detail: 'See how much each department has had approved this month, without building a report.' },
+        { num: 3, title: 'What just happened', detail: 'The latest submissions, approvals and returns, so you know what moved without asking anyone.' }
+      ],
+      render: a => `
+      <div class="flex items-center justify-between pb-3"><div><div class="text-[10px] text-slate-400">Purchase Requests / Dashboard</div><div class="font-bold text-sm">Purchasing at a glance</div></div><span class="text-[10px] px-2 py-1 rounded-full bg-white border border-slate-200 text-slate-500">● November 2026</span></div>
+      <div class="relative grid grid-cols-2 sm:grid-cols-4 gap-2">${pin(1, a)}
+        ${[['My open requests','0','Submitted, not yet received','text-slate-900'],['Waiting for my approval','2','Open approvals to decide','text-amber-600'],['Approved this month',peso(220650),'6 requests','text-emerald-700'],['Overdue approvals','2','Pending more than 2 days','text-rose-600']].map(k => `
+        <div class="${card} p-2.5 ${ring(1, a)}"><div class="text-[9px] font-semibold uppercase text-slate-400">${k[0]}</div><div class="text-base font-extrabold ${k[3]}">${k[1]}</div><div class="text-[9px] text-slate-500">${k[2]}</div></div>`).join('')}
+      </div>
+      <div class="grid grid-cols-2 gap-2 mt-3">
+        <div class="relative ${card} p-3 ${ring(2, a)}">${pin(2, a)}
+          <div class="flex justify-between items-center mb-2"><span class="text-xs font-bold">Approved spend by department</span><span class="text-[9px] text-slate-400">this month</span></div>
+          ${[['IT',144900],['Sales',39750],['Operations',30000],['Finance',6000],['Admin',0]].map(d => `
+          <div class="mb-1.5"><div class="flex justify-between text-[10px]"><span>${d[0]}</span><b>${peso(d[1])}</b></div><div class="h-1.5 rounded bg-slate-100 dark:bg-slate-800"><div class="h-1.5 rounded bg-navy-600" style="width:${d[1] / 1449}%"></div></div></div>`).join('')}
+        </div>
+        <div class="relative ${card} p-3 ${ring(3, a)}">${pin(3, a)}
+          <div class="text-xs font-bold mb-2">Recent activity</div>
+          ${[['Jose Reyes','submitted','PR-2026-0030','Shelving labels & bin markers','9:20 AM','text-slate-700'],['Rafael Navarro','approved','PR-2026-0028','Sales team mobile phones','Yesterday','text-emerald-700'],['Maria Santos','approved','PR-2026-0024','Warehouse loading bay reinforcement','Nov 20','text-emerald-700']].map(r => `
+          <div class="p-2 mb-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-[10px]"><div class="flex justify-between"><b>${r[2]}</b><span class="text-slate-400 text-[9px]">${r[4]}</span></div><div class="font-semibold">${r[3]}</div><div class="text-[9px] ${r[5]}">${r[0]} ${r[1]} it</div></div>`).join('')}
+        </div>
+      </div>`
+    },
+
+    form: {
+      tab: 'New request', nav: 'New Request', title: 'Filing a purchase request',
+      desc: 'One short form instead of a paper form and an email chain.',
+      annotations: [
+        { num: 1, title: 'Items and a running total', detail: 'Add as many items as you need. The total updates as you type, so nobody adds things up by hand.' },
+        { num: 2, title: 'Know who needs to approve', detail: 'When the total goes over your limit (₱50,000 here), the form tells you the owner will also need to approve it.' },
+        { num: 3, title: 'Save now, send later', detail: 'Save a draft and finish it later, or submit it. If an approver sends it back, you fix it and send it again — no new form.' }
+      ],
+      render: a => `
+      <div class="flex items-center justify-between pb-3"><div><div class="text-[10px] text-slate-400">Purchase Requests / New Request</div><div class="font-bold text-sm">New Purchase Request</div></div>${chip('Draft', PRC.draft)}</div>
+      <div class="${card} p-3 grid grid-cols-3 gap-x-3 gap-y-2 text-[10px]">
+        ${[['Purpose','Laptops for new employees'],['Department','IT'],['Date needed','Dec 2, 2026'],['Priority','Normal'],['Suggested vendor','TechCore IT Solutions'],['Requested by','Ana Cruz']].map(f => `<div><div class="text-slate-400">${f[0]}</div><div class="mt-0.5 px-2 py-1 rounded border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-semibold truncate">${f[1]}</div></div>`).join('')}
+      </div>
+      <div class="relative ${card} p-3 mt-2 text-[10px] ${ring(1, a)}">${pin(1, a)}
+        <div class="grid grid-cols-12 font-semibold text-slate-400 text-[9px] pb-1"><div class="col-span-6">ITEM</div><div class="col-span-1 text-right">QTY</div><div class="col-span-2 text-right">UNIT PRICE</div><div class="col-span-3 text-right">TOTAL</div></div>
+        ${[['Lenovo IdeaPad 3',1,20000],['Lenovo ThinkPad',1,20000],['Acer Aspire 3',1,20000]].map(r => `
+        <div class="grid grid-cols-12 py-1.5 border-t border-slate-100 dark:border-slate-800"><div class="col-span-6 font-semibold">${r[0]}</div><div class="col-span-1 text-right">${r[1]}</div><div class="col-span-2 text-right">${peso(r[2])}</div><div class="col-span-3 text-right font-semibold">${peso(r[1] * r[2])}</div></div>`).join('')}
+        <div class="flex justify-between items-center pt-2 border-t border-slate-200 dark:border-slate-700"><span class="text-navy-600 dark:text-amber-400 font-semibold">+ Add item</span><span class="text-xs">Total <b class="text-sm">${peso(60000)}</b></span></div>
+      </div>
+      <div class="relative mt-2 p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-[10px] ${ring(2, a)}">${pin(2, a)}
+        <b>Over ${peso(50000)}:</b> this request will also need owner approval (Roberto Villanueva).
+      </div>
+      <div class="relative flex justify-end gap-1.5 mt-2 ${ring(3, a)} rounded-lg">${pin(3, a, '-top-2 -right-2')}
+        <span class="text-[10px] px-2.5 py-1 rounded-md border border-slate-300 bg-white dark:bg-slate-800">Save as Draft</span>
+        <span class="text-[10px] px-2.5 py-1 rounded-md bg-navy-600 text-white font-semibold">Submit Request</span>
+      </div>`
+    },
+
+    record: {
+      tab: 'Request record', nav: 'Approvals', title: 'One request, start to finish',
+      desc: 'Where a request is now, everything that happened to it, and what the person looking at it can do.',
+      annotations: [
+        { num: 1, title: 'Where it is right now', detail: 'The status and who it is waiting for are shown at the top, so nobody has to ask “where is my request?”' },
+        { num: 2, title: 'Every step on record', detail: 'Each submission, approval, return or rejection is listed with who did it, when, and their comment.' },
+        { num: 3, title: 'Only the right buttons', detail: 'The approver sees Approve, Return or Reject. Returning or rejecting asks for a reason, so the requester knows what to fix.' }
+      ],
+      render: a => `
+      <div class="relative ${card} p-3 flex flex-wrap items-center justify-between gap-2 ${ring(1, a)}">${pin(1, a)}
+        <div><span class="font-bold text-xs text-navy-600 dark:text-amber-400">PR-2026-0028</span> <b class="text-xs">· Sales team mobile phones</b> ${chip('Pending Final Approval', PRC.final)}<div class="text-[10px] text-slate-500">Waiting for: <b>Roberto Villanueva (Owner)</b> · 1 day</div></div>
+        <div class="text-right"><div class="text-[9px] text-slate-400">TOTAL</div><div class="text-sm font-extrabold">${peso(65970)}</div></div>
+      </div>
+      <div class="grid grid-cols-5 gap-2 mt-3">
+        <div class="col-span-2 ${card} p-3 text-[10px] space-y-2">
+          ${[['Requested by','Nina Aquino'],['Department','Sales'],['Date needed','Dec 8, 2026'],['Suggested vendor','TechCore IT Solutions'],['Items','Smartphone, 256GB · 3 units']].map(f => `<div><div class="text-slate-400">${f[0]}</div><b>${f[1]}</b></div>`).join('')}
+        </div>
+        <div class="col-span-3 space-y-2">
+          <div class="relative ${card} p-3 ${ring(2, a)}">${pin(2, a)}
+            <div class="text-xs font-bold mb-2">Approval timeline</div>
+            <div class="border-l-2 border-slate-200 pl-3 space-y-2 text-[10px]">
+              <div><b class="text-violet-700">Waiting for owner approval</b><div class="text-slate-500">Over ${peso(50000)} — level 2</div></div>
+              <div><b>Approved by Rafael Navarro</b> <span class="text-slate-400">· Dept Head</span><div class="text-slate-500">Nov 24, 2026 · 3:30 PM</div><div class="italic text-slate-600">“Needed for the new reps starting in December.”</div></div>
+              <div><b>Submitted by Nina Aquino</b><div class="text-slate-500">Nov 24, 2026 · 9:00 AM</div></div>
+            </div>
+          </div>
+          <div class="relative ${card} p-2.5 flex items-center justify-end gap-1.5 ${ring(3, a)}">${pin(3, a)}
+            <span class="text-[10px] px-2.5 py-1 rounded-md bg-emerald-600 text-white font-semibold">Approve</span>
+            <span class="text-[10px] px-2.5 py-1 rounded-md border border-orange-300 text-orange-700 bg-white">Return</span>
+            <span class="text-[10px] px-2.5 py-1 rounded-md border border-rose-300 text-rose-700 bg-white">Reject</span>
+          </div>
+        </div>
+      </div>`
+    },
+
+    approvals: {
+      tab: 'Approvals', nav: 'Approvals', title: 'Approvals and reminders',
+      desc: 'Everything waiting for one approver, and a morning email for anything late.',
+      annotations: [
+        { num: 1, title: 'Oldest first', detail: 'Requests waiting for you are listed oldest first, with the number of days each has waited. Late ones are marked in red.' },
+        { num: 2, title: 'A reminder every weekday', detail: 'At 8 AM each approver gets one short email listing their overdue requests, with a link to each one. No chasing by phone.' }
+      ],
+      render: a => `
+      <div class="flex items-center justify-between pb-3"><div><div class="text-[10px] text-slate-400">Approvals</div><div class="font-bold text-sm">Waiting for your approval</div></div><span class="text-[10px] px-2 py-1 rounded-full bg-white border border-slate-200 text-slate-500">Operations · Dept Head</span></div>
+      <div class="grid grid-cols-5 gap-2">
+        <div class="relative col-span-3 ${card} p-2 text-[10px] ${ring(1, a)}">${pin(1, a)}
+          ${[['PR-2026-0025','Delivery van tires & oil service','Mark Dizon',29500,5],['PR-2026-0030','Shelving labels & bin markers','Jose Reyes',6300,0],['PR-2026-0068','Safety gear for warehouse team','Jose Reyes',25600,0],['PR-2026-0069','Forklift preventive maintenance','Jose Reyes',26100,0]].map(r => `
+          <div class="flex items-center justify-between p-2 border-b border-slate-100 dark:border-slate-800">
+            <div><b>${r[0]}</b> <span class="font-semibold">· ${r[1]}</span><div class="text-[9px] text-slate-500">${r[2]} · ${peso(r[3])}</div></div>
+            <span class="text-[9px] px-2 py-0.5 rounded-full border ${r[4] > 2 ? 'bg-rose-50 text-rose-700 border-rose-200 font-semibold' : 'bg-slate-50 text-slate-600 border-slate-200'}">${r[4] === 0 ? 'Today' : 'Waiting ' + r[4] + (r[4] === 1 ? ' day' : ' days')}${r[4] > 2 ? ' · Overdue' : ''}</span>
+          </div>`).join('')}
+        </div>
+        <div class="relative col-span-2 ${card} p-3 text-[10px] ${ring(2, a)}">${pin(2, a)}
+          <div class="flex items-center gap-1.5 text-[9px] text-slate-400 mb-1"><span>✉</span><span>Mon–Fri · 8:00 AM</span></div>
+          <div class="font-bold text-xs">You have 1 overdue approval</div>
+          <div class="text-[9px] text-slate-500 mb-2">To: Maria Santos</div>
+          ${[['PR-2026-0025','Delivery van tires','5 days']].map(r => `<div class="flex justify-between py-1 border-t border-slate-100 dark:border-slate-800"><span><b>${r[0]}</b> · ${r[1]}</span><span class="text-rose-600">${r[2]}</span></div>`).join('')}
+          <div class="mt-2 text-navy-600 dark:text-amber-400 font-semibold">Open in the app →</div>
+        </div>
+      </div>`
+    },
+
+    print: {
+      tab: 'Printed PR', nav: 'All Requests', title: 'Purchase request form',
+      desc: 'A clean, signed-off form for your files, without typing anything into a Word template.',
+      annotations: [
+        { num: 1, title: 'Filled in for you', detail: 'Requester, items, amounts and total come straight from the request — no retyping, no copy-paste mistakes.' },
+        { num: 2, title: 'Approvals on the form', detail: 'The names and dates of everyone who approved it are printed on the form, taken from the request’s timeline.' },
+        { num: 3, title: 'Saved automatically', detail: 'One click saves it as a PDF in your company files and links it to the request, ready to print or attach.' }
+      ],
+      render: a => `
+      <div class="flex justify-end mb-2"><span class="relative text-[10px] px-2 py-1 rounded-md bg-navy-600 text-white ${ring(3, a)}">${pin(3, a, '-top-2 -right-2')}Save as PDF</span></div>
+      <div class="relative mx-auto max-w-sm bg-white text-slate-900 rounded shadow p-4 text-[9px] ${ring(1, a)}">${pin(1, a)}
+        <div class="flex justify-between"><div><div class="text-slate-400 tracking-widest">NORTHBRIDGE TRADING CORP.</div><div class="text-sm font-bold text-navy-600">PURCHASE REQUEST</div></div><div class="text-right text-slate-500">PR No. <b>PR-2026-0024</b><br>Nov 19, 2026</div></div>
+        <div class="h-0.5 bg-navy-600 my-2"></div>
+        <div class="grid grid-cols-2 border border-slate-200"><div class="p-1 bg-slate-50">Requested by</div><div class="p-1 font-semibold">Jose Reyes · Operations</div></div>
+        <div class="grid grid-cols-12 font-bold text-navy-600 mt-2 pb-0.5 border-b border-slate-300"><div class="col-span-7">ITEM</div><div class="col-span-2 text-right">QTY</div><div class="col-span-3 text-right">AMOUNT</div></div>
+        ${[['Cement, Portland Type 1, 40kg','50 bags',14500],['Deformed steel bar 10mm x 6m','100 pcs',48000],['Safety helmet and vest set','15 sets',12000]].map(r => `<div class="grid grid-cols-12 py-0.5 border-b border-slate-100"><div class="col-span-7">${r[0]}</div><div class="col-span-2 text-right">${r[1]}</div><div class="col-span-3 text-right">${peso(r[2])}</div></div>`).join('')}
+        <div class="flex justify-end pt-1 font-bold">TOTAL ${peso(74500)}</div>
+        <div class="relative grid grid-cols-3 gap-3 mt-4 text-center ${ring(2, a)} rounded">${pin(2, a)}
+          ${[['Jose Reyes','Requested · Nov 19'],['Maria Santos','Dept Head · Nov 20'],['Roberto Villanueva','Owner · Nov 25']].map(s => `<div class="border-t border-slate-800 pt-1"><b>${s[0]}</b><div class="text-slate-500">${s[1]}</div></div>`).join('')}
+        </div>
+      </div>`
+    }
+  },
+
+  /* ---------- Screenshots (see shot list) ---------- */
+  screenshots: [
+    { src: 'img/pr-01-dashboard.webp', caption: 'Dashboard — your open requests, approvals waiting for you, this month’s spending and what is late' },
+    { src: 'img/pr-02-request-form.webp', caption: 'New request — add the items, see the total, and know right away if the owner must approve' },
+    { src: 'img/pr-03-request-record.webp', caption: 'One request — where it is now and every step so far, with comments' },
+    { src: 'img/pr-04-approvals.webp', caption: 'Approvals — everything waiting for you, oldest first, with late ones marked' },
+    { src: 'img/pr-05-settings.webp', caption: 'Settings — change approval limits, departments and approvers yourself' },
+    { src: 'img/pr-06-pr-form.webp', caption: 'Purchase request form — filled in by the app, with approvers’ names, saved as PDF', fit: 'contain' }
+  ],
+
+  /* ---------- "Why it works for busy teams" ---------- */
+  decisions: [
+    ['mouse-pointer-click', 'Easy for anyone', 'Filing a request takes a couple of minutes. Approvers open the email link and decide in one click.'],
+    ['git-branch', 'The right approver, every time', 'Requests go to the department head, then to the owner when the amount is over your limit. Nobody has to remember the rules.'],
+    ['history', 'Every decision on record', 'Who approved, returned or rejected each request, when, and why — kept with the request.'],
+    ['bell-ring', 'Nothing sits for days', 'Approvers get an email for each new request and a morning reminder for anything overdue.'],
+    ['shield-check', 'Right people, right access', 'Uses your Microsoft 365 sign-in. Staff see their own requests, department heads see their department, the owner sees everything.'],
+    ['sliders-horizontal', 'You set the rules', 'Change approval limits, overdue days, departments and approvers yourself — no developer needed.'],
+    ['file-text', 'Paperwork done for you', 'The purchase request form fills itself in, with approvers’ names and dates, and is saved as PDF.'],
+    ['wallet', 'No new software to buy', 'Runs on the Microsoft 365 your company already pays for. Your data stays in your account.']
+  ],
+
+  /* ---------- For IT teams: architecture ---------- */
+  archNodes: {
+    ui: ['layout', 'Power Apps canvas app', '9 screens', 'Client', [
+      'One shared left navigation component and theme record, so every screen looks and behaves alike.',
+      'Screens and buttons shown by role: Requester, Department Head, Final Approver, Purchasing, Admin.',
+      'Email links open the app directly on the right request (deep link with a request ID).']],
+    logic: ['cpu', 'App logic', 'Power Fx', 'Rules', [
+      'Two-level routing: department head first, final approver when the total is over the department’s limit (default ₱50,000).',
+      'A department head’s own request skips level 1; if it is also under the limit, it is approved straight away.',
+      'Reject and Return require a comment. Every action writes a row to the Approval Log.',
+      'PR numbers (PR-2026-0001) built from the SharePoint ID after the first save, so they never repeat.']],
+    data: ['database', 'SharePoint lists', '8 lists', 'Storage', [
+      'Single line text instead of Choice columns for statuses, roles and dropdowns.',
+      'Filters kept inline and delegable — the App checker reports 0 delegation warnings.',
+      'Approval limits, overdue days and approvers stored in a Settings list, not in code.']],
+    flow: ['workflow', 'Power Automate', '3 flows', 'Automation', [
+      'PRNotify — emails the next person at each step, with a link to the request.',
+      'PRSavePdf — Power Apps (V2) trigger; receives the PDF() of an HTML layout and saves it to a SharePoint library.',
+      'PROverdueReminder — scheduled weekdays at 8 AM; one digest per approver of what is overdue.',
+      'Standard connectors only — no premium license.']],
+    docs: ['folder-check', 'PR Printouts library', 'PDF forms', 'Records', [
+      'One-page purchase request forms with approver names and dates.',
+      'Each PDF is linked from its request.']]
+  },
+
+  /* ---------- Data model ---------- */
+  model: [
+    ['PR_Requests', 'One row per purchase request', 'Status, department, total, current approver and stage, PO number, PDF link'],
+    ['PR_LineItems', 'The items on each request', 'Description, category, quantity, unit price, line total'],
+    ['PR_ApprovalLog', 'The full audit trail', 'One row per action: who, when, stage and comment'],
+    ['PR_Departments', 'Departments and their heads', 'Head, approval limit, active flag'],
+    ['PR_AppUsers', 'Who can use the app', 'Department and roles (one person can have more than one)'],
+    ['PR_Vendors', 'Supplier list', 'Contact person, phone, email, category'],
+    ['PR_Categories', 'Purchase categories', 'Used on line items and in reports'],
+    ['PR_Settings', 'Business rules (one row)', 'Default limit, overdue days, final approver, company name'],
+    ['PR Printouts (library)', 'Generated PDF forms', 'One file per request']
+  ],
+
+  /* ---------- Code tabs: paste your Power Fx into `code` ---------- */
+  codeSnippets: {
+    submit: { label: 'Submit & route', file: 'scrRequestForm › btnFormSaveCore › OnSelect (excerpt)', caption: 'Works out where a request goes when it is submitted: the department head first, the final approver when the total is over the limit, and straight to Approved when a head files their own small request.', code:
+`With(
+    {
+        wTotal: Sum(colLineItems, Qty * UnitPrice),
+        wDept: LookUp(PR_Departments, Title = ddFormDept.Selected.Title),
+        wVendor: Coalesce(Trim(txtFormVendorOther.Text), ddFormVendor.Selected.Title),
+        wWasReturned: !IsBlank(gblEditPR) && gblEditPR.Status = "Returned"
+    },
+    With(
+        {
+            wLimit: Coalesce(wDept.FinalApprovalLimit, gblSettings.DefaultFinalApprovalLimit),
+            wIsHead: Lower(wDept.HeadEmail) = Lower(gblUser.Email)
+        },
+        With(
+            {
+                wStatus: If(
+                    !locSubmit, If(wWasReturned, "Returned", "Draft"),
+                    wIsHead && wTotal > wLimit, "Pending Final Approval",
+                    wIsHead, "Approved",
+                    "Pending Dept Head"
+                )
+            },
+            // 1. Save the request header
+            Set(gblSavedPR, Patch(
+                // ... then line items, the Approval Log entry and PRNotify
+` },
+    approve: { label: 'Approve / Return', file: 'scrRequestRecord › btnRecActCore › OnSelect (excerpt)', caption: 'One button handles every decision. A level-1 approval over the limit moves to the final approver; otherwise the request is approved. Every action is written to the Approval Log, then the next person is emailed through PRNotify.', code:
+`With(
+    {
+        wStage: gblRec.CurrentStage,
+        wLimit: Coalesce(LookUp(PR_Departments, Title = gblRec.Department).FinalApprovalLimit,
+                         gblSettings.DefaultFinalApprovalLimit),
+        wComment: Trim(txtRecComment.Text)
+    },
+    // 1. Update the request
+    Switch(locAction,
+        "Approve",
+            If(wStage = "1" && gblRec.TotalAmount > wLimit,
+                Patch(PR_Requests, gblRec, {Status: "Pending Final Approval", CurrentStage: "2",
+                    CurrentApproverEmail: gblSettings.FinalApproverEmail}),
+                Patch(PR_Requests, gblRec, {Status: "Approved", CurrentStage: "",
+                    CurrentApproverEmail: "", ApprovedOn: Now()})
+            ),
+        "Return", Patch(PR_Requests, gblRec, {Status: "Returned", CurrentStage: "", CurrentApproverEmail: ""}),
+        "Reject", Patch(PR_Requests, gblRec, {Status: "Rejected", CurrentStage: "", CurrentApproverEmail: ""}),
+        "Ordered", Patch(PR_Requests, gblRec, {Status: "Ordered", PONumber: Trim(txtRecPO.Text),
+            ActualVendor: Coalesce(Trim(txtRecActualVendor.Text), gblRec.SuggestedVendor), OrderedOn: Today()})
+        // ... Cancel, Received, Closed
+    );
+    // 2. Write the log row
+    Patch(PR_ApprovalLog, Defaults(PR_ApprovalLog), {
+        Title: Switch(locAction, "Approve", "Approved", "Return", "Returned", "Reject", "Rejected",
+                      "Cancel", "Cancelled", locAction),
+        PRNumber: gblRec.PRNumber, RequestID: gblRec.ID,
+        Stage: If(locAction in ["Approve", "Return", "Reject", "Cancel"], wStage, ""),
+        ActorName: gblUser.Title, ActorEmail: gblUser.Email, ActionDate: Now(),
+        Comment: If(locAction = "Ordered", "PO number " & Trim(txtRecPO.Text), wComment)
+    });
+    // 3. Reload the record and timeline, 4. email the next person via PRNotify, 5. confirm
+    ...
+)` },
+    inbox: { label: 'Approvals inbox', file: 'scrApprovals › galApprovals (excerpt)', caption: 'The approver’s inbox. The filter is delegation-safe (text equality, sorted by date), and late requests are flagged using the overdue days stored in PR_Settings.', code:
+`- galApprovals:
+    Control: Gallery@2.15.0
+    Properties:
+      Items: =Sort(Filter(PR_Requests, CurrentApproverEmail = gblUser.Email), SubmittedOn, SortOrder.Ascending)
+    Children:
+      - recApprAccent:
+          Properties:
+            Visible: =DateDiff(ThisItem.SubmittedOn, Now(), TimeUnit.Days) > gblSettings.OverdueDays
+      - btnApprWait:
+          Properties:
+            Text: |-
+              ="Waiting " & DateDiff(ThisItem.SubmittedOn, Now(), TimeUnit.Days) & " day(s)" &
+              If(DateDiff(ThisItem.SubmittedOn, Now(), TimeUnit.Days) > gblSettings.OverdueDays, " · Overdue", "")
+      - lblApprStage:
+          Properties:
+            Text: |-
+              =If(ThisItem.CurrentStage = "2", "Final approval (stage 2)",
+                  "Department head approval (stage 1)" & If(ThisItem.NeedsFinalApproval, " · needs owner sign-off after you", ""))` },
+    pdf: { label: 'Save PDF', file: 'scrPrintPR › btnPrintSave › OnSelect', caption: 'Turns the on-screen form into a PDF, saves it to the PR Printouts library through the PRSavePdf flow, and stores the link on the request.', code:
+`UpdateContext({locSaving: true});
+Set(gblPdfBlob, PDF(conPrintPage, {Size: PaperSize.A4, ExpandContainers: true}));
+With({wName: gblRec.PRNumber & "_" & Text(Now(), "yyyymmdd-hhmmss") & ".pdf"},
+    IfError(
+        With({wRes: PRSavePdf.Run({name: wName, contentBytes: gblPdfBlob}, wName)},
+            Patch(PR_Requests, LookUp(PR_Requests, ID = gblRec.ID), {PdfUrl: wRes.pdfurl});
+            Set(gblRec, LookUp(PR_Requests, ID = gblRec.ID));
+            UpdateContext({locPdfUrl: wRes.pdfurl});
+            Notify(gblRec.PRNumber & " saved to PR Printouts.", NotificationType.Success)
+        ),
+        Notify("Could not save the PDF: " & FirstError.Message, NotificationType.Error)
+    )
+);
+UpdateContext({locSaving: false})` }
+  }
+};
+
+const APPS = [purchaseApp, assetApp];
+let APP = APPS[0], screensData = APP.screens, NAV = APP.nav;
+
+/* ==========================================================
    5. Other work (edit freely)
    ========================================================== */
 const projects = [
@@ -672,28 +1016,56 @@ function applyConfig() {
     else { el.removeAttribute('target'); el.addEventListener('click', e => { e.preventDefault(); showToast('This link isn’t set up yet.'); }); }
   });
   document.getElementById('year').textContent = new Date().getFullYear();
-  // screenshots
-  document.getElementById('shot-grid').innerHTML = CONFIG.screenshots.map(s => s.src
-    ? `<figure class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"><a href="${s.src}" target="_blank"><img src="${s.src}" alt="${s.caption}" loading="lazy" class="w-full aspect-[16/9] ${s.fit === 'contain' ? 'object-contain bg-slate-100 dark:bg-slate-800' : 'object-cover object-top'}"></a><figcaption class="p-3 text-xs text-slate-600 dark:text-slate-400">${s.caption}</figcaption></figure>`
-    : `<figure class="rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 p-6 aspect-[16/10] flex flex-col items-center justify-center text-center text-xs text-slate-400"><i data-lucide="image-plus" class="w-6 h-6 mb-2"></i>${s.caption}<span class="mt-1 text-[10px]">(screenshot coming)</span></figure>`).join('');
 }
-function buildStatic() {
-  document.getElementById('decision-grid').innerHTML = decisions.map(d => `
+function buildApp() {
+  document.getElementById('decision-grid').innerHTML = APP.decisions.map(d => `
     <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
       <div class="w-9 h-9 rounded-lg bg-navy-600 text-amber-400 flex items-center justify-center mb-3"><i data-lucide="${d[0]}" class="w-4 h-4"></i></div>
       <h3 class="font-bold text-sm">${d[1]}</h3><p class="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${d[2]}</p></div>`).join('');
-  document.getElementById('arch-nodes').innerHTML = Object.entries(archNodes).map(([k, n], i) => `
+  document.getElementById('arch-nodes').innerHTML = Object.entries(APP.archNodes).map(([k, n], i) => `
     <button onclick="selectArch('${k}')" id="arch-${k}" class="arch-node text-left p-4 rounded-xl border transition">
       <div class="flex items-center justify-between mb-2"><span class="p-2 rounded-lg bg-navy-600 text-amber-400"><i data-lucide="${n[0]}" class="w-4 h-4"></i></span><span class="text-[10px] font-mono text-slate-400">0${i + 1} / ${n[3].toUpperCase()}</span></div>
       <h4 class="font-bold text-sm">${n[1]}</h4><p class="text-xs text-slate-500 mt-1">${n[2]}</p></button>`).join('');
-  document.getElementById('model-rows').innerHTML = model.map(m => `<tr><td class="px-4 py-2.5 font-mono text-xs font-semibold text-navy-600 dark:text-amber-400">${m[0]}</td><td class="px-4 py-2.5">${m[1]}</td><td class="px-4 py-2.5 text-slate-500 hidden md:table-cell">${m[2]}</td></tr>`).join('');
-  document.getElementById('code-tabs').innerHTML = Object.entries(codeSnippets).map(([k, c]) => `<button onclick="switchCode('${k}')" id="code-tab-${k}" class="code-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition">${c.label}</button>`).join('');
+  document.getElementById('model-rows').innerHTML = APP.model.map(m => `<tr><td class="px-4 py-2.5 font-mono text-xs font-semibold text-navy-600 dark:text-amber-400">${m[0]}</td><td class="px-4 py-2.5">${m[1]}</td><td class="px-4 py-2.5 text-slate-500 hidden md:table-cell">${m[2]}</td></tr>`).join('');
+  document.getElementById('code-tabs').innerHTML = Object.entries(APP.codeSnippets).map(([k, c]) => `<button onclick="switchCode('${k}')" id="code-tab-${k}" class="code-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition">${c.label}</button>`).join('');
+  document.getElementById('shot-grid').innerHTML = APP.screenshots.map(s => s.src
+    ? `<figure class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"><a href="${s.src}" target="_blank"><img src="${s.src}" alt="${s.caption}" loading="lazy" onerror="shotMissing(this)" class="w-full aspect-[16/9] ${s.fit === 'contain' ? 'object-contain bg-slate-100 dark:bg-slate-800' : 'object-cover object-top'}"></a><figcaption class="p-3 text-xs text-slate-600 dark:text-slate-400">${s.caption}</figcaption></figure>`
+    : `<figure class="rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 p-6 aspect-[16/10] flex flex-col items-center justify-center text-center text-xs text-slate-400"><i data-lucide="image-plus" class="w-6 h-6 mb-2"></i>${s.caption}<span class="mt-1 text-[10px]">(screenshot coming)</span></figure>`).join('');
+  document.getElementById('app-name').textContent = APP.name;
+  document.getElementById('app-tagline').textContent = APP.tagline;
+  ['problem', 'solution', 'changes'].forEach(k => document.getElementById('app-' + k).textContent = APP[k]);
+  document.getElementById('mock-appname').textContent = APP.titleBar;
+  document.getElementById('tech-appname').textContent = APP.name;
+  document.getElementById('code-intro').textContent = APP.codeIntro;
+}
+function buildProjects() {
   document.getElementById('project-grid').innerHTML = projects.map(p => `
     <article class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between">
       <div><div class="flex items-center justify-between gap-2 mb-3"><span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-navy-50 dark:bg-slate-800 text-navy-600 dark:text-amber-400">${p[0]}</span><span class="text-xs font-mono text-slate-400">${p[1]}</span></div>
       <h3 class="text-lg font-bold">${p[2]}</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">${p[3]}</p></div>
       <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-1.5">${p[4].map(t => `<span class="text-[11px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">${t}</span>`).join('')}</div>
     </article>`).join('');
+}
+function buildSwitch() {
+  document.getElementById('app-switch').innerHTML = APPS.map(x => {
+    const on = x === APP;
+    return `<button onclick="switchApp('${x.id}')" role="tab" aria-selected="${on}" class="flex items-center gap-2 px-3.5 py-2 rounded-lg text-left transition ${on ? 'bg-white dark:bg-slate-800 shadow-sm' : 'hover:bg-white/60 dark:hover:bg-slate-800/60'}">
+      <i data-lucide="${x.icon}" class="w-4 h-4 ${on ? 'text-navy-600 dark:text-amber-400' : 'text-slate-400'}"></i>
+      <span><span class="block text-xs font-bold ${on ? 'text-navy-600 dark:text-amber-400' : 'text-slate-600 dark:text-slate-300'}">${x.name}</span><span class="block text-[10px] text-slate-500">${x.switchSub}</span></span></button>`;
+  }).join('');
+}
+function switchApp(id, keepUrl) {
+  APP = APPS.find(x => x.id === id) || APPS[0];
+  screensData = APP.screens; NAV = APP.nav;
+  currentScreen = Object.keys(screensData)[0]; currentPin = 1;
+  buildSwitch(); buildApp(); buildTabs(); render();
+  selectArch(Object.keys(APP.archNodes)[0]); switchCode(Object.keys(APP.codeSnippets)[0]);
+  if (!keepUrl) { try { const u = new URL(location.href); u.searchParams.set('example', APP.id); history.replaceState(null, '', u); } catch (e) {} }
+  lucide.createIcons();
+}
+function shotMissing(img) {
+  const f = img.closest('figure'), cap = f.querySelector('figcaption').textContent;
+  f.outerHTML = `<figure class="rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 p-6 aspect-[16/10] flex flex-col items-center justify-center text-center text-xs text-slate-400">${cap}<span class="mt-1 text-[10px]">(screenshot coming)</span></figure>`;
 }
 function toggleTech() {
   const b = document.getElementById('tech-body'), open = b.classList.toggle('hidden') === false;
@@ -704,7 +1076,7 @@ function selectArch(k) {
     const on = n.id === 'arch-' + k;
     n.className = 'arch-node text-left p-4 rounded-xl border transition ' + (on ? 'border-2 border-navy-600 dark:border-amber-500 bg-navy-50 dark:bg-slate-800' : 'border-slate-200 dark:border-slate-800 hover:border-slate-400 bg-slate-50/60 dark:bg-slate-950/60');
   });
-  const n = archNodes[k];
+  const n = APP.archNodes[k];
   document.getElementById('arch-detail').innerHTML = `<h4 class="font-bold">${n[1]} <span class="text-xs font-medium text-slate-500">· ${n[2]}</span></h4>
     <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">${n[4].map(s => `<li class="flex gap-2"><span class="text-amber-500 font-bold">•</span><span>${s}</span></li>`).join('')}</ul>`;
   lucide.createIcons();
@@ -715,7 +1087,7 @@ function switchCode(k) {
   document.querySelectorAll('.code-tab').forEach(b => {
     b.className = 'code-tab px-3 py-1.5 rounded-lg text-xs font-semibold transition ' + (b.id === 'code-tab-' + k ? 'bg-navy-600 text-white' : 'bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300');
   });
-  const c = codeSnippets[k];
+  const c = APP.codeSnippets[k];
   document.getElementById('code-filename').textContent = c.file;
   document.getElementById('code-caption').textContent = c.caption;
   document.getElementById('code-content').innerHTML = c.code.split('\n').map(l => `<div class="code-line">${escapeHtml(l)}</div>`).join('');
@@ -732,7 +1104,7 @@ function copyText(text, msg) {
     t.remove();
   }
 }
-function copyCurrentCode() { copyText(codeSnippets[activeCode].code, 'Code copied'); }
+function copyCurrentCode() { copyText(APP.codeSnippets[activeCode].code, 'Code copied'); }
 function copyEmail() { copyText(CONFIG.email, 'Email address copied'); }
 function showToast(m) {
   const box = document.getElementById('toast-container'), t = document.createElement('div');
@@ -750,7 +1122,9 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
 });
 window.addEventListener('DOMContentLoaded', () => {
-  applyConfig(); buildStatic(); buildTabs(); render(); selectArch('ui'); switchCode('load'); lucide.createIcons();
+  applyConfig(); buildProjects();
+  let start = null; try { start = new URL(location.href).searchParams.get('example'); } catch (e) {}
+  switchApp(start || APPS[0].id, true);
 });
 </script>
 </body>
